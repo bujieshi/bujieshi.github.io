@@ -26,7 +26,6 @@ a { text-decoration: none; }
 
 * {	font-family: 'Open Sans', sans-serif; }
 body { background-color: #eee; }
-body { background:url(/images/backGround.jpg) }
 
 h1 {
 	font-size: 30px;
@@ -62,6 +61,7 @@ footer p, address {	font-size: 14px; }
 	max-width: 1200px;
 	margin: 0 auto;	
 	background: white;
+    body { background: url（'/images/background.jpg'); }
 	box-shadow: 0 0 5px rgba(107, 110, 112, 0.4); 
 }
 

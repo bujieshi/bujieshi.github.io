@@ -38,6 +38,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #E9EBEC;
+    background: url（'/images/background.jpg');
     font-weight:300;
     overflow-x:hidden;
 }
