@@ -61,7 +61,7 @@ footer p, address {	font-size: 14px; }
 	max-width: 1200px;
 	margin: 0 auto;	
 	background: white;
-    body { background: url（'/images/background.jpg'); }
+    background: url（'/images/background.jpg');
 	box-shadow: 0 0 5px rgba(107, 110, 112, 0.4); 
 }
 
