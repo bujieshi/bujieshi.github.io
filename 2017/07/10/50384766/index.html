@@ -136,17 +136,101 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/bg4.jpg)" >
-  <h2>关于</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)" >
+  <h2></h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-06-29T06:08:33.000Z">
-          2017-06-29
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:49.000Z">
+          2017-07-10
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  
+  <h1 id="github-的简单使用"><a href="#github-的简单使用" class="headerlink" title=" github 的简单使用 "></a><a href="/qq_18670721/article/details/50384766"> github 的简单使用 </a></h1><p>工欲善其事，必先利其器</p>
+<p>mac  GitHub 客户端下载地址：</p>
+<p><a href="https://desktop.github.com/" target="_blank" rel="external">https://desktop.github.com/</a></p>
+<p>注册账号：</p>
+<p><a href="https://github.com/" target="_blank" rel="external">https://github.com/</a> –&gt;Pricing and Signup –&gt;Create a free account</p>
+<p>1.打开 终端： 输入  cd ～/.ssh  //  检查是否已经存在ssh  如图：</p>
+<p><img src="http://img.blog.csdn.net/20151223101313014?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt="">  </p>
+<p>如果出现如下的字样的话，证明 ssh 不存在，我们需要创建一个ssh 出来。</p>
+<p>2. 接下来 继续在终端输入如下命令  ssh-keygen -t rsa -C  youremail@.com  如图：</p>
+<p><img src="http://img.blog.csdn.net/20151223101645416?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>3  .出现如下字样。。。表示我们ssh 已经创建好了 。。</p>
+<p>4.接下来我们到 github 我们已经注册好的账号。。。</p>
+<p>登陆github，选择Account Settings–&gt;SSH  Keys 添加ssh</p>
+<p>title 为注册时的邮箱地址 如图所示：</p>
+<p><img src="http://img.blog.csdn.net/20151223102212720?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>5. key 值为我们第二步创建的 地方，， 如图：</p>
+<p><img src="http://img.blog.csdn.net/20151223102452723?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>6  打开finder  然后 command+shift+G  在弹出的文件夹中输入 上面的地址。  然后找到文件  如图：</p>
+<p>注：  如果这里找不到  .ssh 文件的话 ，我们可以在终端输入 显示隐藏文件的命令（</p>
+<pre><code>显示Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles YES
+</code></pre><p>）</p>
+<pre><code>（显示Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles YES
+
+隐藏Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles NO
+
+输完单击Enter键，退出终端，重新启动Finder就可以了）
+</code></pre><p><img src="http://img.blog.csdn.net/20151223102826542?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20151223102853648?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>7  .  找到  id_rsa.pub文件，然后我们打开该文件，然后复制里面的内容，填入上面的Key 中  然后点击addKey</p>
+<p>8. 接下来我们验证一下  先测试一下你的帐号跟github连上没有  打开终端，输入命令：  ssh -T git@github.com  如图：</p>
+<p><img src="http://img.blog.csdn.net/20151223103851923?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>当我们  看到 这句话的话证明链接成功了。。。</p>
+<p>9. 接下来，我们到 <a href="https://github.com/" target="_blank" rel="external">https://github.com/</a>  创建一个新的仓库： 如图：</p>
+<p>点击创建： 然后我们就创建成功了。 然后我们就看到下面的界面：  <img src="http://img.blog.csdn.net/2015122310420030
+2?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fil
+l/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>上面的参数介绍：</p>
+<p>Description： 项目描述</p>
+<p>public 和private  公开和隐私</p>
+<p>最后一个是否添加一个README 的描述文件</p>
+<p>点击Create  然后我们看到下面的界面： 如图：</p>
+<p><img src="http://img.blog.csdn.net/20151223104712175?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>1  0. 这里我们看到了git的命令了， 接下来我们回到终端:( 按照上面的命令来执行：  )（<br>注意：这里用到的git命令，你要切换到你要上传项目的目录下，然后使用下面的命令  ）</p>
+<p>git init  //初始化本地仓库</p>
+<p>git add README.md  //添加项目的描述文件</p>
+<p>git commit -m  “bujieshi commit”  // 提交到仓库 并写一下注释  “”部分为注释内容</p>
+<p>git remote add origin <a href="https://github.com/bujieshi/BLEDome.git" target="_blank" rel="external">https://github.com/bujieshi/BLEDome.git</a> //  远程连接仓库<br>，并且穿件一个名称为“origin” de 文件夹仓库</p>
+<p>git push -u origin master // 将本地的东西上传到地址为origin的地址下,master 分支下。</p>
+<p>11. OK 到这里，我们的项目已经上传到远程仓库了，来个截图瞄瞄：  </p>
+<p><img src="http://img.blog.csdn.net/20151223110333249?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>接下来我们再来介绍一下本地如何建造仓库：</p>
+<pre><code>    $ makdir ~/hello-world    //创建一个项目hello-world
+    $ cd ~/hello-world       //打开这个项目
+    $ git init             //初始化 
+    $ touch README
+    $ git add README        //更新README文件
+    $ git commit -m &#39;first commit&#39;     //提交更新，并注释信息“first commit”
+    $ git remote add origin git@github.com:defnngj/hello-world.git     //连接远程github项目  
+    $ git push -u origin master     //将本地项目更新到github项目上去
+</code></pre><p>最后:（我们不想让项目进行继续托管状态或者说我们取消项目与svn 的关联）</p>
+<p>(注： 这里执行下面的命令，我们要跳转到我们要取消关联的项目文件夹中，然后执行下面的操做)</p>
+<p>1.删除 项目与git 的关联（也就是删除项目中的.git ）命令如下：</p>
+<p>find .-name “.git” | xargs rm -Rf</p>
+<p>2.删除项目与svn 的关联(也就是删除项目中的.svn)  命令如下:</p>
+<p>find .-name “.svn” | xargs rm -Rf</p>
+<p>总结  ：github 作为一个 代码托管平台，很受欢迎，所以，在这里简单的写了一下，下篇我们来讲 github 客户端的使用；</p>
+
   </div>
   <!--评论块-->
     
@@ -180,15 +264,23 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
+  <a href="/2017/07/10/50296581/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
 
 
   <!-- Next Nav -->
+    
+  <a href="/2017/07/10/50432892/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
     
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#github-的简单使用"><span class="post-toc-number">1.</span> <span class="post-toc-text"> github 的简单使用 </span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

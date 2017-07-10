@@ -136,17 +136,57 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/bg4.jpg)" >
-  <h2>关于</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)" >
+  <h2></h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-06-29T06:08:33.000Z">
-          2017-06-29
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:52.000Z">
+          2017-07-10
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  
+  <h1 id="ios-开发之加入所需字库问题"><a href="#ios-开发之加入所需字库问题" class="headerlink" title=" ios 开发之加入所需字库问题 "></a><a href="/qq_18670721/article/details/50171619"> ios 开发之加入所需字库问题 </a></h1><p>1. 下载所需的字库，然后添加到项目中 然后</p>
+<p><img src="http://img2.ph.126.net/bwv5GoiYpwknBsY_F
+BKWrg==/6630600473258567078.png" alt="ios 开发之加入所需字库问题 - 佛前一粒沙 - 佛前一粒沙的博客"></p>
+<p>添加到项目中 如图所示</p>
+<p><img src="http://img2.ph.126.net/duzHpTdTKkjYK1E1G
+tpvBQ==/6630400362141844274.png" alt="ios 开发之加入所需字库问题 - 佛前一粒沙 - 佛前一粒沙的博客"></p>
+<p>2. 在info.plist 文件中添加 字库文件</p>
+<p>(注： 我这里出现了问题，加载info.plist文件的时候你会发现有两个info.plist 文件。如下图：)</p>
+<p><img src="http://img2.ph.126.net/4zZUlNWvm1ufLEetA
+4CJYg==/6630130981793034662.png" alt="ios 开发之加入所需字库问题 - 佛前一粒沙 - 佛前一粒沙的博客"></p>
+<p>ios 项目中 test 也是一个测试项目</p>
+<p>(注：这里添加文件 不要添加错了，我这里犯了个错误，把下图的这句话加载到了test 这个info文件中，然后调试半天没有出来)</p>
+<p>3.在正确的info.plist 文件中添加完成后，接下来就是在项目中的使用，这里如果不知道你要添加的名字：这里有两种方法：</p>
+<p>第一种方法：选择你下砸的字库 然后双击打开  ，</p>
+<p><img src="http://img2.ph.126.net/bwv5GoiYpwknBsY_F
+BKWrg==/6630600473258567078.png" alt="ios 开发之加入所需字库问题 - 佛前一粒沙 - 佛前一粒沙的博客"></p>
+<p>打开完文件文件 ，提示如下图：</p>
+<p><img src="http://img0.ph.126.net/2LzuD4zYsoBVaUr5F
+mlBWg==/6630798385351577283.png" alt="ios 开发之加入所需字库问题 - 佛前一粒沙 - 佛前一粒沙的博客"></p>
+<p>然后 最上面的标题栏就是你要使用的字体的名称</p>
+<p>第二种方法：</p>
+<p>for  (  int  i =  0  ; i &lt; [familys  count  ]; i++)</p>
+<p>{</p>
+<p>NSString  *family = [familys  objectAtIndex  :i];</p>
+<p>NSLog  (  @”Fontfamily:%@”  , family);</p>
+<p>}</p>
+<p>用这个方法进行调试 在输出的字体查看 是否加入成功</p>
+<p>打开全部的字库文件：</p>
+<p><img src="http://img2.ph.126.net/QOqPiUzdhdmEka6sD
+5zbVg==/6631303061187030485.png" alt="ios 开发之加入所需字库问题 - 佛前一粒沙 - 佛前一粒沙的博客"></p>
+<p><img src="http://img0.ph.126.net/7BvQgMY3Lel2FykdJ
+zpamg==/6630637856653927293.png" alt="ios 开发之加入所需字库问题 - 佛前一粒沙 - 佛前一粒沙的博客"></p>
+<p>（注：这个字库的名称就是和我们第一种方法打开的字库标题的名称是一样的）</p>
+<p>找到我们需要的字体，接下来就是使用了</p>
+<p>UIFont  *font = [  UIFont  fontWithName  :  @”Akzidenz-Grotesk BQ”  size  :<br>150  ];</p>
+<p>_lableTarget  .  font  = font;</p>
+<p>一句话搞定了！</p>
+<p>OK了，亲测，效果 如图：</p>
+<p><img src="http://img0.ph.126.net/yvNhK6X9meKqfagVy
+xaT1g==/6630624662514392934.png" alt="ios 开发之加入所需字库问题 - 佛前一粒沙 - 佛前一粒沙的博客"></p>
+
   </div>
   <!--评论块-->
     
@@ -180,15 +220,23 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
+  <a href="/2017/07/10/49667203/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
 
 
   <!-- Next Nav -->
+    
+  <a href="/2017/07/10/50171623/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
     
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ios-开发之加入所需字库问题"><span class="post-toc-number">1.</span> <span class="post-toc-text"> ios 开发之加入所需字库问题 </span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

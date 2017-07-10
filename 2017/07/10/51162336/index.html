@@ -136,17 +136,32 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/bg4.jpg)" >
-  <h2>关于</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-8.png)" >
+  <h2></h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-06-29T06:08:33.000Z">
-          2017-06-29
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:47.000Z">
+          2017-07-10
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  
+  <h1 id="cocoapods-安装第三方库，然后运行项目，报错（sharedApplication’-is-unavailable-not"><a href="#cocoapods-安装第三方库，然后运行项目，报错（sharedApplication’-is-unavailable-not" class="headerlink" title="[ cocoapods 安装第三方库，然后运行项目，报错（sharedApplication’ is unavailable: not"></a>[ cocoapods 安装第三方库，然后运行项目，报错（sharedApplication’ is unavailable: not</h1><p>available iOS (App Extension)） ](/qq_18670721/article/details/51162336)</p>
+<p>1.不知怎么回事，这两天遇到的都是cocoapods 的问题。</p>
+<p>2.安装一个第三方库，然后 直接在运行项目，然后就出现错误：错误如下：</p>
+<p><img src="http://img.blog.csdn.net/20160415155548957?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>有时候  也不一定是这个错误。还可能报  UIActionSheet或者是  UIAlertView的错误 但是 错误提示和上面的一模一样。</p>
+<p>3.我在想，以前安装都没有问题，为什么这两天安装就有问题了。后来经过半天的google和百度终于找到原因了不是我们代码的问题，也不是第三方库的问题，问题就出<br>在了cocoapods上面。</p>
+<p>4.解决办法如下：</p>
+<p>首先我们要卸载我们的cocoapods  然后我们再重新安装我们的cocoapods，然后再重新导入我们的第三方库。</p>
+<p>然后，再次运行我们的项目然后就不会再报这个错误了。(注：怎么卸载和怎么安装cocoapods 我的博客中都有体现的)。</p>
+<p>5.这个解决办法是按照苹果官方论坛给出的解决办法：（链接如下：）</p>
+<p><a href="https://forums.developer.apple.com/thread/25213" target="_blank" rel="external"> https://forums.developer.apple.com/thread/25213
+</a></p>
+<p>总结：总有那么多我们预想不到的错误，努力吧！加油！</p>
+
   </div>
   <!--评论块-->
     
@@ -180,15 +195,23 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
+  <a href="/2017/07/10/51161228/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
 
 
   <!-- Next Nav -->
+    
+  <a href="/2017/07/10/51861268/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
     
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cocoapods-安装第三方库，然后运行项目，报错（sharedApplication’-is-unavailable-not"><span class="post-toc-number">1.</span> <span class="post-toc-text">[ cocoapods 安装第三方库，然后运行项目，报错（sharedApplication’ is unavailable: not</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

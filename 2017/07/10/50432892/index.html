@@ -136,17 +136,50 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/bg4.jpg)" >
-  <h2>关于</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)" >
+  <h2></h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-06-29T06:08:33.000Z">
-          2017-06-29
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:49.000Z">
+          2017-07-10
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  
+  <h1 id="如何从电脑中卸载cocoapods"><a href="#如何从电脑中卸载cocoapods" class="headerlink" title=" 如何从电脑中卸载cocoapods "></a><a href="/qq_18670721/article/details/50432892"> 如何从电脑中卸载cocoapods </a></h1><p>今天为了写一篇教大家使用cocoapods的文章 ，特意研究了以下 如何卸载cocoapods，</p>
+<p>因为本人的机子上已经安装成功了，所以要研究一下 如何卸载，然后在从新安装。</p>
+<p>接下来我就教大家如何卸载cocoapods</p>
+<p>1.打开终端，输入命令  which pod  然后回车 我们就看到一个地址，这个地址就是我们安装pod 的地址  如图所示</p>
+<p><img src="http://img.blog.csdn.net/20151230103615057?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>2  . 找到地址了，然后我们就要删除了 输入命令  sudo rm -rf /usr/local/bin/pod<br>后面的地址就是图上的地址；接下来回让你输入密码（密码都知道，苹果的开机密码） 如图所示（  移除pod组件  ）</p>
+<p><img src="http://img.blog.csdn.net/20151230104119176?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>3  .接下来我们就要找到我们的cocoapods 安装包的位置 输入如下命令：  gem list</p>
+<p>（  移除 RubyGems 中的 Cocoapods程序包，  RubyGems（简称 gems）是一个用于对 Ruby组件进行打包的 Ruby<br>打包系统。 它提供一个分发 Ruby 程序和库的标准格式，还提供一个管理程序包安装的工具。查看gems中本地程序包  ）如图所示：</p>
+<p><img src="http://img.blog.csdn.net/20151230105102458?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>4  .看到上面的列表，找到我们需要删除的cocoapods的部分，如图所示：</p>
+<p><img src="http://img.blog.csdn.net/20151230105223824?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>5  .接下来们要看清楚版本号，然后进行删除，输入命令  sudo gem uninstall cocoapods -v 0.39.0（<br>注：后面的版本号要和上面列表中的版本号对应  ）  如果删除成功： 如图所示：</p>
+<p><img src="http://img.blog.csdn.net/20151230105451890?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>6. 接下来删除 下一个包,输入命令：  sudo gem uninstall cocoapods-core -v 0.39.0（<br>注：这个包上面也有，注意版本好的对应  ），  如果删除成功：如图所示：</p>
+<p><img src="http://img.blog.csdn.net/20151230105757740?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>7  .接下来们们检查cocoapods是否删除： 输入如下命令：  pod search AFNetworking或者pod  然后如图所示：</p>
+<p><img src="http://img.blog.csdn.net/20151230110004789?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""><br>证明删除成功；</p>
+<p>总结：cocoapods 的使用并没有我们想想的那么难，主要是对终端的操作要熟悉。好了，把cocoapods卸载掉了，然后开始安装吧…..</p>
+
   </div>
   <!--评论块-->
     
@@ -180,15 +213,23 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
+  <a href="/2017/07/10/50384766/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
 
 
   <!-- Next Nav -->
+    
+  <a href="/2017/07/10/50326673/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
     
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如何从电脑中卸载cocoapods"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 如何从电脑中卸载cocoapods </span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

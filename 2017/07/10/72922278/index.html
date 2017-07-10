@@ -136,17 +136,19 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/bg4.jpg)" >
-  <h2>关于</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)" >
+  <h2></h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-06-29T06:08:33.000Z">
-          2017-06-29
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:44.000Z">
+          2017-07-10
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  
+  <h1 id="Afnetworking访问遇到3840-错误"><a href="#Afnetworking访问遇到3840-错误" class="headerlink" title=" Afnetworking访问遇到3840_错误 "></a><a href="/qq_18670721/article/details/72922278"> Afnetworking访问遇到3840_错误 </a></h1><h2 id="AFNetWorking-访问遇到3840-错误"><a href="#AFNetWorking-访问遇到3840-错误" class="headerlink" title="AFNetWorking 访问遇到3840 错误"></a>AFNetWorking 访问遇到3840 错误</h2><h3 id="错误标示如下："><a href="#错误标示如下：" class="headerlink" title="错误标示如下："></a>错误标示如下：</h3><pre><code>Error Domain=NSCocoaErrorDomain Code=3840 &quot;No string key for value in object around character 1.&quot; UserInfo={NSDebugDescription=No string key for value in object around character 1.}
+</code></pre><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="在网络请求的地方添加上下面的语句："><a href="#在网络请求的地方添加上下面的语句：" class="headerlink" title="在网络请求的地方添加上下面的语句："></a>在网络请求的地方添加上下面的语句：</h3><pre><code>AFJSONResponseSerializer * responseSerializer =[AFJSONResponseSerializer serializerWithReadingOptions NSJSONReadingAllowFragments);
+</code></pre><h3 id="加载上这一句就Ok了"><a href="#加载上这一句就Ok了" class="headerlink" title="加载上这一句就Ok了"></a>加载上这一句就Ok了</h3>
   </div>
   <!--评论块-->
     
@@ -180,15 +182,23 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
+  <a href="/2017/07/10/72922219/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
 
 
   <!-- Next Nav -->
+    
+  <a href="/2017/07/10/72922629/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
     
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Afnetworking访问遇到3840-错误"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Afnetworking访问遇到3840_错误 </span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AFNetWorking-访问遇到3840-错误"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">AFNetWorking 访问遇到3840 错误</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误标示如下："><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">错误标示如下：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决办法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">解决办法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在网络请求的地方添加上下面的语句："><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">在网络请求的地方添加上下面的语句：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加载上这一句就Ok了"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">加载上这一句就Ok了</span></a></li></ol></li></ol></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

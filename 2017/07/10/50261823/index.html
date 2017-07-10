@@ -136,17 +136,67 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/bg4.jpg)" >
-  <h2>关于</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-13.png)" >
+  <h2></h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-06-29T06:08:33.000Z">
-          2017-06-29
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:50.000Z">
+          2017-07-10
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  
+  <h1 id="Xcode升级-插件不能正常使用"><a href="#Xcode升级-插件不能正常使用" class="headerlink" title=" Xcode升级,插件不能正常使用 "></a><a href="/qq_18670721/article/details/50261823"> Xcode升级,插件不能正常使用 </a></h1><p>昨天不小心升级了一下Xcode ,然后 今天使用的时候,发现插件使用不了了，比如我们常用的插件 VVDocumenter-Xcode(注释插件)</p>
+<p>接下来我们教大家 如何让插件变得可用</p>
+<p>1.打开终端。输入</p>
+<p>defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</p>
+<p>然后我们得到序列号(这里是得到你本机的序列号)</p>
+<p>如图</p>
+<p><img src="http://img.blog.csdn.net/20151211114453251?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>然后我们复制这个序列号，备用。</p>
+<p>2.打开finder，然后command+shift+G 组合键。然后弹出个框框。然后 我们输入xocde插件路径：</p>
+<p>~/library/Application Support/Developer/Shared/Xcode/Plug-ins</p>
+<p>如图  </p>
+<p><img src="http://img.blog.csdn.net/20151211114744937?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>3. 点击前往，我们找到插件</p>
+<p>如图</p>
+<p><img src="http://img.blog.csdn.net/20151211114900679?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>4  .接下来 我们以其中的一个插件为例（其他插件的操作一样）</p>
+<p>1.我们选择插件，然后点击右键(显示包内容)，如图：</p>
+<p><img src="http://img.blog.csdn.net/20151211115117158?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>2  .我们看到下面的界面：（如图）</p>
+<p><img src="http://img.blog.csdn.net/20151211115319099?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>3  .我们点击打开这个文件夹 ，接下来显示内容如图：</p>
+<p><img src="http://img.blog.csdn.net/20151211115426478?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>4  .然后我们打开info.plist 文件，如图：</p>
+<p><img src="http://img.blog.csdn.net/20151211115516350?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>然后  找到 如图所示的地方：</p>
+<p><img src="http://img.blog.csdn.net/20151211124652054?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>然后  增加一个Item 如图：</p>
+<p><img src="http://img.blog.csdn.net/20151211124732702?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>然后  把我们第一步复制的xcode 的序列号添加进去。。（Command+s 保存plist 文件）</p>
+<p><img src="" alt=""></p>
+<p>5  .接下来 重启Xcode 以后会弹出一个框框，  重启Xcode时会提示“Load bundle”、 “Skip<br>Bundle”，这里必须选择“Load bundle”，不然插件无法使用。</p>
+<p>总结：xcode升级以后，因为序列号不一样，所以我们要更改序列号。。。</p>
+
   </div>
   <!--评论块-->
     
@@ -180,15 +230,23 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
+  <a href="/2017/07/10/50171621/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
 
 
   <!-- Next Nav -->
+    
+  <a href="/2017/07/10/50296581/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
     
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Xcode升级-插件不能正常使用"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Xcode升级,插件不能正常使用 </span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

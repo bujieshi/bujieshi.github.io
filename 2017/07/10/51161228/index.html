@@ -136,17 +136,36 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/bg4.jpg)" >
-  <h2>关于</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-12.png)" >
+  <h2></h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-06-29T06:08:33.000Z">
-          2017-06-29
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:48.000Z">
+          2017-07-10
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  
+  <h1 id="cocoaPods-安装第三库出现错误-target-overrides-the-USER-HEADER-SEARCH-PATHS-build"><a href="#cocoaPods-安装第三库出现错误-target-overrides-the-USER-HEADER-SEARCH-PATHS-build" class="headerlink" title="[ cocoaPods 安装第三库出现错误(target overrides the USER_HEADER_SEARCH_PATHS build"></a>[ cocoaPods 安装第三库出现错误(target overrides the <code>USER_HEADER_SEARCH_PATHS</code> build</h1><p>setting defined in `Pods/) ](/qq_18670721/article/details/51161228)</p>
+<p>1.今天在往项目中使用Cocoapods 添加第三方库的时候，出现问题 ：</p>
+<p>1.添加上第三方库以后，然后直接运行项目，然后项目就报错，还是稀奇古怪的错误。</p>
+<p>2.终端上也在提示我们第三方库没有添加成功，报错如下：</p>
+<p><img src="http://img.blog.csdn.net/20160415140757864?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>3  .解决办法如下：</p>
+<p>1&gt;按照上面报错的提示，我们“  USER_HEADER_SEARCH_PATHS  ” 这个复制下来。</p>
+<p>2&gt;然后找到我们项目–》targates–》buildSetting  然后在右边的输入框中输入“  USER_HEADER_SEARCH_PATHS<br>”   如下图：</p>
+<p><img src="http://img.blog.csdn.net/20160415141815588?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>3&gt; 然后搜索到了这个路径以后 ,在这路径中添加 “$(inherited)”  如下图：</p>
+<p><img src="http://img.blog.csdn.net/20160415141913478?watermark/2/text/aHR0cDovL2Jsb2
+cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravit
+y/Center" alt=""></p>
+<p>4&gt;然后我们再次运行我们的项目 ，我们的项目就不会报错了。</p>
+<p>4. 总结一下： cocoapods  我们只是用来管理第三方的，所以可能用的时候可能会出现很多未知的错误。要我们大家共同来发现了。</p>
+
   </div>
   <!--评论块-->
     
@@ -180,15 +199,23 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
+  <a href="/2017/07/10/50433760/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
 
 
   <!-- Next Nav -->
+    
+  <a href="/2017/07/10/51162336/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
     
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cocoaPods-安装第三库出现错误-target-overrides-the-USER-HEADER-SEARCH-PATHS-build"><span class="post-toc-number">1.</span> <span class="post-toc-text">[ cocoaPods 安装第三库出现错误(target overrides the USER_HEADER_SEARCH_PATHS build</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
