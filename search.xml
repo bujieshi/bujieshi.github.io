@@ -52,6 +52,11 @@
   </entry>
   <entry>
     <title></title>
+    <url>%2F2017%2F07%2F10%2F51161228%2F</url>
+    <content type="text"><![CDATA[[ cocoaPods 安装第三库出现错误(target overrides the USER_HEADER_SEARCH_PATHS buildsetting defined in `Pods/) ](/qq_18670721/article/details/51161228) 1.今天在往项目中使用Cocoapods 添加第三方库的时候，出现问题 ： 1.添加上第三方库以后，然后直接运行项目，然后项目就报错，还是稀奇古怪的错误。 2.终端上也在提示我们第三方库没有添加成功，报错如下： 3 .解决办法如下： 1&gt;按照上面报错的提示，我们“ USER_HEADER_SEARCH_PATHS ” 这个复制下来。 2&gt;然后找到我们项目–》targates–》buildSetting 然后在右边的输入框中输入“ USER_HEADER_SEARCH_PATHS” 如下图： 3&gt; 然后搜索到了这个路径以后 ,在这路径中添加 “$(inherited)” 如下图： 4&gt;然后我们再次运行我们的项目 ，我们的项目就不会报错了。 4. 总结一下： cocoapods 我们只是用来管理第三方的，所以可能用的时候可能会出现很多未知的错误。要我们大家共同来发现了。]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>%2F2017%2F07%2F10%2F50433760%2F</url>
     <content type="text"><![CDATA[cocoapods 的详细使用 最近好多人在问我怎么安装cocoapods，怎么使用cocoapods，今天就写篇文章来告诉你们， 其实cocoapods的使用也是很简单的，就是介个命令而已。 1.首先我们要打开我们的终端：如图： 2 . 输入命令， gem sources -l 来查看镜像是否被墙，如图( 下面的镜像是我替换过以后的图像) 这里输出的如果是 https://rubygems.org/ 镜像的话，我们要删除这个镜像，然后添加镜像：https://ruby.taobao.org/ 具体操作命令如下： 删除原始镜像： gem sources –remove https://rubygems.org/ 添加新的镜像： gem sources -a https://ruby.taobao.org/ 查看是否更改成功：再次输入以下命令： 如图：(那么我们镜像更改成功了) 3 .接下来我们要进行安装 cocoapods 的重要步骤了；( sudo gem install -n /usr/local/bincocoapods ) 大概过了个10几分钟，然后就安装成功了。 如图：(安装成功) 4.接下来我们检测是否安装成功：直接输入 pod 命令或者输入 pod search AFNetworking 来检查是否安装成功。 如图所示： 如果出现如图所示，表示安装成功。（注：如果出现如下图情况的话： ） 出现 这种情况的话，不要慌张，耐心等待即可 ：如果出现下面的内容，表示设置成功 5 .接下来我们研究一下怎么使用cocoapods，首先我们创建一个Dome，创建成功后我们进入到我们项目的根目录(注：这里我创建的Dome 在桌面)如图所示： 6 .上面就是Dome 的根目录，然后在这里我们要创建Podfile，命令如下： touch Podfile 如图所示： 我们创建Podfile 成功; 7 . 接下来我们就要操作Podfile 文件了，说到这里有中方法来写我们的Podfile文件 第一种使用vim，第二种直接打开Podfile 来写入我们需要的东西 使用之前我们比如我们要加入 AFNetworking 这个第三方库，我们执行一下命令 ： pod search AFNetworking ( 注：对于我们不知道如何写 Podfile 文件，这里我教你怎么写，执行上面的命令后，下面我红色标示的内容就是我们要写入到Podflie中的内容 )如图所示： 使用vim 命令，来写 输入命令: vim Podfile 如图： 接下来 我们开始编辑： 如图所示： 里面 写入的参数：platform : ios,’7.0’ (注：找个参数表示为最低支持的系统版本) 第二个参数就是我们上一步执行搜索出来的内容，复制到这里就Ok了 （ 注：如图所示，我们加入了我们需要的东西，写入完成了，然后我们要保存退出，这里要怎么退出来vim呢？，写入完成后，我们点击左上角的esc按钮，然后输入冒号（：），然后输入wq，（wq 的意思是保存退出的意思），然后回车 ） 如图所示： 这里我们介绍第二种方法，直接在我们的项目中使用Podfile 文件来写入上面的内容( 注：这种方法简单粗暴，建议大家使用这种方法 ) 如图所示： 打开 我们的项目的文件夹 ，然后打开Podflie文件，在里面写入上面的两行：如图所示 写入 完成，保存退出，我们回到终端 8.回到终端，接下来我们的操作就是一样了，我们要在我们的Dome项目中导入 AFNetworking 这个第三方库 接下来的两个命令是我们经常使用的 pod install 和 pod update (注：这两个命令被墙了，貌似现在使用不了了) 现在我们使用下面的两个命令： pod install ： 现在使用 ： pod install –verbose –no-repo-update pod update : 现在使用 ： pod update –verbose –no-repo-update 接下来我们在终端输入命令 : pod install –verbose –no-repo-update 如图所示： 如果 看到下面的字样，表示我们导入第三方库成功：(如图所示：) 注意上面的绿色的字体的翻译 ,( 注： 这里告诉我们再次打开项目，要用Dome6.xcworkspae打开,如果使用Dome6.scodeproj打开的话就会报错 ) 9. 接下来们打开我们的项目，你会发现，多出来了一些东西，如图所示： 我们 用 打开项目，我们来看看现在的项目架构， 如图所示： 1 0.根据上面的目录可以看到，我们加入AFNetworking 的库已经成功添加进来了。到这里基本算是完成了。 11.接下来我们说 ，我现在不想添加这个AFNetworking 这个库了，我想把它从我们的项目中移除，怎么办： 我来告诉你，很简单：（注：看到上面我们项目中的Podfile 文件打开） 如图所示： 我们现在不需要AFNetworking这个第三方库了，我们把下面的 pod ‘AFNetworking’, ‘~&gt; 3.0.0-beta.1’这句话从Podfile中删除就好了 接下来我们回到终端，输入命令： pod update –verbose –no-repo-update （ 注 ：更新命令 ） 如图所示： 看到上面的内容，表示我们，已经把AFNetworking 从我们的项目中移除出去了 接下来我们看看，我们的项目中还有没有这个库， 看到文件夹中都是空的，OK，证明我们已经把它从我们的项目中移除出去了。 总结：OK，到这里总格流程基本上搞清楚了，cocoapods 大概就那么几个命令，只要会用就是这么简单。。。。 cocoapods 赶紧玩起来吧。 不懂的请留意，请骚扰我。。。。]]></content>
   </entry>
@@ -59,11 +64,6 @@
     <title></title>
     <url>%2F2017%2F07%2F10%2F50524214%2F</url>
     <content type="text"><![CDATA[Miku 修改背景音乐 这两天有个xcode的插件 Miku 玩的挺火的。 下载地址： https://github.com/poboke/Miku 但是里面的背景音真是听吐了（）。 然后百度搜索 怎么修改背景音乐。然后无果。 然后自己摸索。修改方法如下： 第一：要安装好这个插件以后。 第二步： 进入插件目录，然后找到这个插件。 （方法： ~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Miku.xcplugin ） 第三步：这个就是我们看到我们所有的插件了；找到这个插件：如图： 第四 步：然后进入下个界面： 如图： 第五 步：然后打开这个界面： 如图： 第六步 ： 然后打开 Resource 这个文件夹： 第七步： 然后打开这个文件夹；如图： 第八步 ： 进入文件夹 resource， 然后看到音乐：如图： 第九步 ：然后找个你要更改的MP3 格式的歌曲 。然后放入这个文件夹中 ，名字要和这个名字一样（ 注：不然js识别不出来 ）； 第十步： 然后重启xcode 就Ok了； 就是这么简单。就是这个粗暴。赶快去玩吧； 玩转你的程序鼓励师！]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F2017%2F07%2F10%2F51161228%2F</url>
-    <content type="text"><![CDATA[[ cocoaPods 安装第三库出现错误(target overrides the USER_HEADER_SEARCH_PATHS buildsetting defined in `Pods/) ](/qq_18670721/article/details/51161228) 1.今天在往项目中使用Cocoapods 添加第三方库的时候，出现问题 ： 1.添加上第三方库以后，然后直接运行项目，然后项目就报错，还是稀奇古怪的错误。 2.终端上也在提示我们第三方库没有添加成功，报错如下： 3 .解决办法如下： 1&gt;按照上面报错的提示，我们“ USER_HEADER_SEARCH_PATHS ” 这个复制下来。 2&gt;然后找到我们项目–》targates–》buildSetting 然后在右边的输入框中输入“ USER_HEADER_SEARCH_PATHS” 如下图： 3&gt; 然后搜索到了这个路径以后 ,在这路径中添加 “$(inherited)” 如下图： 4&gt;然后我们再次运行我们的项目 ，我们的项目就不会报错了。 4. 总结一下： cocoapods 我们只是用来管理第三方的，所以可能用的时候可能会出现很多未知的错误。要我们大家共同来发现了。]]></content>
   </entry>
   <entry>
     <title></title>
@@ -87,11 +87,6 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F72922201%2F</url>
-    <content type="text"><![CDATA[从Mac中完全删除office 验证数字：sudo sh -c &quot;curl -s https://raw.githubusercontent.com/jimye/OfficeUninstall/master/office_uninstaller.sh | sh&quot; 等待终端命令走完就OK了，我们就彻底从我们的项目删除office 的所有文件了 然后从新安装就好了。]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>%2F2017%2F07%2F10%2F72922219%2F</url>
     <content type="text"><![CDATA[代码行数统计 代码行数统计命令行找到项目所在位置的根目录，然后输入下面的命令 find . &quot;(&quot; -name &quot;*.m&quot; -or -name &quot;*.mm&quot; -or -name &quot;*.cpp&quot; -or -name &quot;*.h&quot; -or -name “*.swift” -or -name &quot;*.rss&quot; &quot;)&quot; -print | xargs wc -l]]></content>
   </entry>
@@ -102,13 +97,18 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F72922278%2F</url>
-    <content type="text"><![CDATA[Afnetworking访问遇到3840_错误 AFNetWorking 访问遇到3840 错误错误标示如下：Error Domain=NSCocoaErrorDomain Code=3840 &quot;No string key for value in object around character 1.&quot; UserInfo={NSDebugDescription=No string key for value in object around character 1.} 解决办法在网络请求的地方添加上下面的语句：AFJSONResponseSerializer * responseSerializer =[AFJSONResponseSerializer serializerWithReadingOptions NSJSONReadingAllowFragments); 加载上这一句就Ok了]]></content>
+    <url>%2F2017%2F07%2F10%2F72922201%2F</url>
+    <content type="text"><![CDATA[从Mac中完全删除office 验证数字：sudo sh -c &quot;curl -s https://raw.githubusercontent.com/jimye/OfficeUninstall/master/office_uninstaller.sh | sh&quot; 等待终端命令走完就OK了，我们就彻底从我们的项目删除office 的所有文件了 然后从新安装就好了。]]></content>
   </entry>
   <entry>
     <title></title>
     <url>%2F2017%2F07%2F10%2F72923061%2F</url>
     <content type="text"><![CDATA[ios几个方法的用法 这两天用到一个系统api，分享给大家项目中用到一个对一个数组中的所有元素以某个分隔符来转换成一个字符串。用法如下：NSString*stringsssss=[array componentsJoinedByString:@&quot;,&quot;] 上面的句子表示：上面的方法就是将一个数组按照”,”分隔符 拼接成一个字符串。这个例子的逆向用法为，将一个字符串以某个分隔符来把字符创装换成数组。用法如下： NSArray*stringSSSSS=[string componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@&quot;,&quot;]]; 上面的句子表示：上面的方法就是将一个字符串按照”,”分隔符，转换成一个数组。]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2F2017%2F07%2F10%2F72922278%2F</url>
+    <content type="text"><![CDATA[Afnetworking访问遇到3840_错误 AFNetWorking 访问遇到3840 错误错误标示如下：Error Domain=NSCocoaErrorDomain Code=3840 &quot;No string key for value in object around character 1.&quot; UserInfo={NSDebugDescription=No string key for value in object around character 1.} 解决办法在网络请求的地方添加上下面的语句：AFJSONResponseSerializer * responseSerializer =[AFJSONResponseSerializer serializerWithReadingOptions NSJSONReadingAllowFragments); 加载上这一句就Ok了]]></content>
   </entry>
   <entry>
     <title></title>
@@ -127,13 +127,13 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F72954473%2F</url>
-    <content type="text"><![CDATA[图片旋转问题(指针旋转问题) 1.最近项目速度表盘有个指针旋转的动画问题(卡了很久了)2.因为项目都是使用的自动布局,所以这个表盘和指针也是用的自动布局3.然后动画的时候一直跑偏，指针一直跑偏4.后来找到原因，因为自动布局的话会对动画有一定的影响5.然后更改自动布局的方式改成Frame (包括指针和表盘)6.更改后，发现问题 _pointImageView.layer.anchorPoint = CGPointMake(1, 0); 指针图片旋转如果添加上这句话的话，然后指针的图片就会跑偏，然后就百度一堆问题，找到原因，7.根据博客 http://blog.csdn.net/yongyinmg/article/details/37927793 上面的介绍， 实际开发中，改变 anchorPoint 的值然后会导致layer层位置的变化，所有按照博客上的说法：但是在实际使用没必要这么麻烦。修改anchorPoint而不想移动layer，在修改 anchorPoint后再重新设置一遍frame就可以达到目的，这时 position 就会自动进行相应的改变。 8.所以我在设置完 _pointImageView.layer.anchorPoint = CGPointMake(1, 0) ，然后就对 _pointImageView的frame从新就行赋值，然后旋转为题就解决了 ，9.哎，这个问题快纠结很长时间，所以啊，还是要多了解的。必经第一次写动画。]]></content>
+    <url>%2F2017%2F07%2F10%2F73177662%2F</url>
+    <content type="text"><![CDATA[npm安装hexo 报错 错误如下 解决办法如下:问题解决:(使用下面的命令，问题就解决)sudo npm install –unsafe-perm –verbose -g hexo]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F73177662%2F</url>
-    <content type="text"><![CDATA[npm安装hexo 报错 错误如下 解决办法如下:问题解决:(使用下面的命令，问题就解决)sudo npm install –unsafe-perm –verbose -g hexo]]></content>
+    <url>%2F2017%2F07%2F10%2F72954473%2F</url>
+    <content type="text"><![CDATA[图片旋转问题(指针旋转问题) 1.最近项目速度表盘有个指针旋转的动画问题(卡了很久了)2.因为项目都是使用的自动布局,所以这个表盘和指针也是用的自动布局3.然后动画的时候一直跑偏，指针一直跑偏4.后来找到原因，因为自动布局的话会对动画有一定的影响5.然后更改自动布局的方式改成Frame (包括指针和表盘)6.更改后，发现问题 _pointImageView.layer.anchorPoint = CGPointMake(1, 0); 指针图片旋转如果添加上这句话的话，然后指针的图片就会跑偏，然后就百度一堆问题，找到原因，7.根据博客 http://blog.csdn.net/yongyinmg/article/details/37927793 上面的介绍， 实际开发中，改变 anchorPoint 的值然后会导致layer层位置的变化，所有按照博客上的说法：但是在实际使用没必要这么麻烦。修改anchorPoint而不想移动layer，在修改 anchorPoint后再重新设置一遍frame就可以达到目的，这时 position 就会自动进行相应的改变。 8.所以我在设置完 _pointImageView.layer.anchorPoint = CGPointMake(1, 0) ，然后就对 _pointImageView的frame从新就行赋值，然后旋转为题就解决了 ，9.哎，这个问题快纠结很长时间，所以啊，还是要多了解的。必经第一次写动画。]]></content>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
