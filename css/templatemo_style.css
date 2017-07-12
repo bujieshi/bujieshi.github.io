@@ -60,7 +60,7 @@ footer p, address {	font-size: 14px; }
 .main-container { 
 	max-width: 1200px;
 	margin: 0 auto;	
-	background: white;
+    background: white;
 	box-shadow: 0 0 5px rgba(107, 110, 112, 0.4); 
 }
 
