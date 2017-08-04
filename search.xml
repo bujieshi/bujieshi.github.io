@@ -2,6 +2,11 @@
 <search>
   <entry>
     <title></title>
+    <url>%2F2017%2F07%2F10%2F49667203%2F</url>
+    <content type="text"><![CDATA[react-native （faceBook 开源项目初探） 注：本文摘自： http://www.csdn.net/article/2015-09-24/2825787-react-native 这2天react-native放出源码，凭着facebook牌子和通过js编写原生应用的特点很快就热了起来，github的star过万应该毫无悬念。目前放出来的是ios版本，后续还会放出android版本，在加上之前的reactjs，那一份代码搞定三个平台并非不可能，于是我也下了个react-native来体验一把。 注：附上：Github 上的开源库下载地址 https://github.com/facebook/react-native 注：使用这个开源框架可能会需要其他工具 根据 官方推荐使用homebrew来安装nodejs,watchman,flow等相关 工具，那我们首先安装homebrew: 1. 首先，使用 Homebrew 官网提供的指引 安装 Homebrew ，然后在终端执行以下命 令 ：（注：该超链有的可能打不开，需要翻墙才能打开） 打开电脑中的终端 输入以下命令来安装 Homebrew ruby -e “ $( curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install )” 如果安装成功的话 （命令行输入 brew -v 查看安装版本） mac-2:~ srain$ brew -v Homebrew 0.9.5 (git revision ac9a7; last commit 2015-09-21) 版本过低将会导致无法安装后续几个组件。 可用 brew update 升级。 2.接下来，安装其他几个工具包 Node.js 和 npm Node.js 需要 4.0 及其以上版本。安装好之后，npm 也有了。 通过 nvm 安装 Node.js nvm 是 Node.js 的版本管理器，可以轻松安装各个版本的 Node.js 版本。 安装 nvm 可以通过 Homebrew 安装： brew install nvm 或者按照 这里 的方法安装。(注:个人觉得命令行来的比较快) 安装完成 （注： 检测是否安装成功 命令行 nvm -v 查看版本） 如图： 3. 接下来 安装Node.js 命令行 输入以下命令： nvm install node &amp;&amp; nvm alias default node 也可以直接下载安装 Node.js： https://nodejs.org/en/download/ （注：我这里 用命令行输入 安装不了 然后去官网下载了一个Node.js 的dmg 文件，然后安装成功） 检测是否安装成功 （注 : 命令行输入：node -v ） 如下图： 4. 接下来安装watchman 和flow 安装 watchman 和 flow 这两个包分别是监控文件变化和类型检查的。安装如下： brew install watchmanbrew install flow 5.接下就到重点了 安装 React-Native 通过 npm 安装即可： npm install -g react-native-cli 检查是否安装成功（注：命令行输入 react-native -v） 输出如下图 6. 查看配置是否能用 App开发环境的设置iOSXCode 6.3 及其以上即可。 Android 这个比较麻烦。 设置环境变量：ANDROID_HOME export ANDROID_HOME=/usr/local/opt/android-sdk SDK Manager 安装以下包： Android SDK Build-tools version 23.0.1 Android 6.0 (API 23) Android Support Repository 至此，我们所有的配置和工具包已经全部完成了(接下来就要进入实战了) 1.创建我的第一个 React-Native 项目 1.打开终端 cd 到你要放置项目的位置 然后输入命令： react-native init Dome1 初始化一个项目，其中 Dome1 是项目名字，这个随意。 等待一段时间之后 （ 具体视网络情况而定 ），项目初始化完成。( 注:这里的等待有点长,视情况而定) 如下图： 演示 （ 这里我要在桌面创建一个 名称为Dome2 的工程） （注：这里的需要等待一段时间，要有耐心） 创建成功后： 这里可以看到 两个版本:（ 一个ios 版本，一个安卓版本 ）然后，我们看看桌面，我们发现了什么 如图：dome2 已经存在了 接下来 ：打开看看： 这里你没有看错 ( 接下来我就只用操作两个文件就Ok了，一个index.android.js,一个是index.ios.js); 接下来，打开ios文件夹（这里的项目架构和我的的项目架构一样） 接下来， 打开我们的项目（这里是整个项目架构） 接下来， 来看我们的AppDeget (是不是要看到了什么了 ) 接下来 , 运行项目： 不管是 iOS 还是 Android，在开发调试阶段，都需要在 Mac 上启动一个 HTTP 服务，称为“Debug Server”，默认运行在 8081端口，APP 通 Debug Server 加载 js。 iOS 和 Android 的模拟器，连接 Mac 本机的服务都很方便。但是通过 USB 或者 WiFi 连接调试，就稍微麻烦一些了。 iOS还是非常简单，XCode 打开项目，点击运行就好。修改 index.ios.js, 在模拟器中 ⌘ + R 重新载入 js 即可看到相应的变化。 iOS 真机调试也简单，修改HTTP地址即可。 jsCodeLocation = [NSURL URLWithString:@” http://localhost:8081/index.ios.bundle “]; Android按照官方文档，需要一个模拟器（Genymotion模拟器也可以）。但是不像 iOS，Android开发平时更多是直接用真机进行开发和调试，如何运行部署到真机，下面会提到。 运行命令： react-native run-android 然后就会部署到模拟器，修改 index.android.js ，调出模拟器菜单键，选择重新载入 js 即可看到变化。 Android 真机调试示例 App 直接部署到真机，红色界面报错，无法连接到 Debug Server。 如果是 5.0 或者以上机型，可通过 adb 反向代理端口，将 Mac 端口反向代理到测试机上。 adb reverse tcp:8081 tcp:8081 如果 5.0 以下机器，应用安装到测试机上之后，摇动设备，在弹出菜单中选择 Dev Setting &gt; Debug Server host fordevice，然后填入 Mac 的 IP 地址（ifconfig 命令可查看本机 IP） 关于修改 DevHelper 来进行和 iOS 一样的开发调试，后续关于热部署时，我会介绍到。 在 Android Studio 中调试开发我们可能希望在 Android Studio 打开项目，然后编译部署到真机。 这个时候，在命令行启动 Debug Server 即可： react-native start 接下来极其重要： （项目中的实战演习,项目中的简单使用） （简单来说就是两步， 要么创建 JavaScript 文件，要么修改 JavaScript文件，来实现项目中的布局和实现 ） javaScript 本人不是很熟，附上彩蛋(两篇) ： 来自OSChina: http://www.oschina.net/translate/going-native-with-react 来自知乎: http://zhuanlan.zhihu.com/FrontendMagazine/19996445 结论和后续 本篇文章，iOS 和 Android 都适用。至此，环境配置和示例项目运行应该都好了。后续我会继续发几篇文章介绍： 重点介绍 Android 相关的开发：包括组件，源码分析等； 动态热部署； 多端代码复用。 参考文档官方文档： https://facebook.github.io/react-native/docs/getting-started.html#content]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>%2F2017%2F07%2F10%2F50171615%2F</url>
     <content type="text"><![CDATA[iphone 手机忘记 访问限制密码 处理方法(未越狱版) 本人 配置环境： 手机 ：iphone 5s A1533 系统：ios 8.4 使用电脑 ：mac air (windows 下未做测试，但是基本流程，基本一样 ); 结果： 亲测 ，可行， 1.所需工具 1. iBackupbot (最新版) 2.iTunes 2.开始进行 1. 下载并安装iBackupbot备份修改软件， 点击这里 进入官网，根据自己的电脑系统进行选择下载。 2、使用iTunes对iPhone做一个新的备份。 3、在iBackupbot里打开刚刚做好的这个备份，刚打开的时候可能会弹出一些错误信息等提示框，不用担心，iBackupbot是可以正常使用的， 3. 打开 iBackupbot 以后 最新版的会直接吧备份文件添加到iBackupbot中 然后点击System Files 接下来我们就看到我们的系统目录了，然后 在右边的工具栏上 输入 com.apple.springboard.plist 然后回车 ，找到文件 com.apple.springboard.plist 找到 com.apple.springboard.plist 文件 双击以后出现下面的情况 如图 这里需要注册么？ not ，不需要 点击 cancel 然后打开文件， 到达这一步 大家要小心了,(很重要) 接下来要找到 这个地方 然后 在下面添加文件(很重要) 这里添加 如果是直接从其他地方 复制过来的话，会保存失败 ， 这里要手动敲进去，然后才能保存成功，这里我摸索了半天，一直保存失败，手动敲入以后，才保存成功 添加完成以后视图如下： 然后点击保存的话 (直接Command+s) 1.保存失败提示： 2.保存成功 没有提示 接下来如何验证是否保存成功 1.双击再次 打开 com.apple.springboard.plist 文件 2.检查写入的两行东西是否成功，如图： 太好了，这行东西还在，那就好， 然后打开 iTunes ， 然后点击恢复备份 如果你的备份比较多的话，点击键盘上的shift+ 鼠标左键+iTunes 上的恢复按钮，选择你更改过的备份， 然后就是漫长的等待了 最后验证： 恢复完成后 打开设置—&gt;通用—&gt;访问限制 亲测，已成功，给力的给个赞]]></content>
   </entry>
@@ -9,11 +14,6 @@
     <title></title>
     <url>%2F2017%2F07%2F10%2F50171619%2F</url>
     <content type="text"><![CDATA[ios 开发之加入所需字库问题 1. 下载所需的字库，然后添加到项目中 然后 添加到项目中 如图所示 2. 在info.plist 文件中添加 字库文件 (注： 我这里出现了问题，加载info.plist文件的时候你会发现有两个info.plist 文件。如下图：) ios 项目中 test 也是一个测试项目 (注：这里添加文件 不要添加错了，我这里犯了个错误，把下图的这句话加载到了test 这个info文件中，然后调试半天没有出来) 3.在正确的info.plist 文件中添加完成后，接下来就是在项目中的使用，这里如果不知道你要添加的名字：这里有两种方法： 第一种方法：选择你下砸的字库 然后双击打开 ， 打开完文件文件 ，提示如下图： 然后 最上面的标题栏就是你要使用的字体的名称 第二种方法： for ( int i = 0 ; i &lt; [familys count ]; i++) { NSString *family = [familys objectAtIndex :i]; NSLog ( @”Fontfamily:%@” , family); } 用这个方法进行调试 在输出的字体查看 是否加入成功 打开全部的字库文件： （注：这个字库的名称就是和我们第一种方法打开的字库标题的名称是一样的） 找到我们需要的字体，接下来就是使用了 UIFont *font = [ UIFont fontWithName : @”Akzidenz-Grotesk BQ” size :150 ]; _lableTarget . font = font; 一句话搞定了！ OK了，亲测，效果 如图：]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F2017%2F07%2F10%2F49667203%2F</url>
-    <content type="text"><![CDATA[react-native （faceBook 开源项目初探） 注：本文摘自： http://www.csdn.net/article/2015-09-24/2825787-react-native 这2天react-native放出源码，凭着facebook牌子和通过js编写原生应用的特点很快就热了起来，github的star过万应该毫无悬念。目前放出来的是ios版本，后续还会放出android版本，在加上之前的reactjs，那一份代码搞定三个平台并非不可能，于是我也下了个react-native来体验一把。 注：附上：Github 上的开源库下载地址 https://github.com/facebook/react-native 注：使用这个开源框架可能会需要其他工具 根据 官方推荐使用homebrew来安装nodejs,watchman,flow等相关 工具，那我们首先安装homebrew: 1. 首先，使用 Homebrew 官网提供的指引 安装 Homebrew ，然后在终端执行以下命 令 ：（注：该超链有的可能打不开，需要翻墙才能打开） 打开电脑中的终端 输入以下命令来安装 Homebrew ruby -e “ $( curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install )” 如果安装成功的话 （命令行输入 brew -v 查看安装版本） mac-2:~ srain$ brew -v Homebrew 0.9.5 (git revision ac9a7; last commit 2015-09-21) 版本过低将会导致无法安装后续几个组件。 可用 brew update 升级。 2.接下来，安装其他几个工具包 Node.js 和 npm Node.js 需要 4.0 及其以上版本。安装好之后，npm 也有了。 通过 nvm 安装 Node.js nvm 是 Node.js 的版本管理器，可以轻松安装各个版本的 Node.js 版本。 安装 nvm 可以通过 Homebrew 安装： brew install nvm 或者按照 这里 的方法安装。(注:个人觉得命令行来的比较快) 安装完成 （注： 检测是否安装成功 命令行 nvm -v 查看版本） 如图： 3. 接下来 安装Node.js 命令行 输入以下命令： nvm install node &amp;&amp; nvm alias default node 也可以直接下载安装 Node.js： https://nodejs.org/en/download/ （注：我这里 用命令行输入 安装不了 然后去官网下载了一个Node.js 的dmg 文件，然后安装成功） 检测是否安装成功 （注 : 命令行输入：node -v ） 如下图： 4. 接下来安装watchman 和flow 安装 watchman 和 flow 这两个包分别是监控文件变化和类型检查的。安装如下： brew install watchmanbrew install flow 5.接下就到重点了 安装 React-Native 通过 npm 安装即可： npm install -g react-native-cli 检查是否安装成功（注：命令行输入 react-native -v） 输出如下图 6. 查看配置是否能用 App开发环境的设置iOSXCode 6.3 及其以上即可。 Android 这个比较麻烦。 设置环境变量：ANDROID_HOME export ANDROID_HOME=/usr/local/opt/android-sdk SDK Manager 安装以下包： Android SDK Build-tools version 23.0.1 Android 6.0 (API 23) Android Support Repository 至此，我们所有的配置和工具包已经全部完成了(接下来就要进入实战了) 1.创建我的第一个 React-Native 项目 1.打开终端 cd 到你要放置项目的位置 然后输入命令： react-native init Dome1 初始化一个项目，其中 Dome1 是项目名字，这个随意。 等待一段时间之后 （ 具体视网络情况而定 ），项目初始化完成。( 注:这里的等待有点长,视情况而定) 如下图： 演示 （ 这里我要在桌面创建一个 名称为Dome2 的工程） （注：这里的需要等待一段时间，要有耐心） 创建成功后： 这里可以看到 两个版本:（ 一个ios 版本，一个安卓版本 ）然后，我们看看桌面，我们发现了什么 如图：dome2 已经存在了 接下来 ：打开看看： 这里你没有看错 ( 接下来我就只用操作两个文件就Ok了，一个index.android.js,一个是index.ios.js); 接下来，打开ios文件夹（这里的项目架构和我的的项目架构一样） 接下来， 打开我们的项目（这里是整个项目架构） 接下来， 来看我们的AppDeget (是不是要看到了什么了 ) 接下来 , 运行项目： 不管是 iOS 还是 Android，在开发调试阶段，都需要在 Mac 上启动一个 HTTP 服务，称为“Debug Server”，默认运行在 8081端口，APP 通 Debug Server 加载 js。 iOS 和 Android 的模拟器，连接 Mac 本机的服务都很方便。但是通过 USB 或者 WiFi 连接调试，就稍微麻烦一些了。 iOS还是非常简单，XCode 打开项目，点击运行就好。修改 index.ios.js, 在模拟器中 ⌘ + R 重新载入 js 即可看到相应的变化。 iOS 真机调试也简单，修改HTTP地址即可。 jsCodeLocation = [NSURL URLWithString:@” http://localhost:8081/index.ios.bundle “]; Android按照官方文档，需要一个模拟器（Genymotion模拟器也可以）。但是不像 iOS，Android开发平时更多是直接用真机进行开发和调试，如何运行部署到真机，下面会提到。 运行命令： react-native run-android 然后就会部署到模拟器，修改 index.android.js ，调出模拟器菜单键，选择重新载入 js 即可看到变化。 Android 真机调试示例 App 直接部署到真机，红色界面报错，无法连接到 Debug Server。 如果是 5.0 或者以上机型，可通过 adb 反向代理端口，将 Mac 端口反向代理到测试机上。 adb reverse tcp:8081 tcp:8081 如果 5.0 以下机器，应用安装到测试机上之后，摇动设备，在弹出菜单中选择 Dev Setting &gt; Debug Server host fordevice，然后填入 Mac 的 IP 地址（ifconfig 命令可查看本机 IP） 关于修改 DevHelper 来进行和 iOS 一样的开发调试，后续关于热部署时，我会介绍到。 在 Android Studio 中调试开发我们可能希望在 Android Studio 打开项目，然后编译部署到真机。 这个时候，在命令行启动 Debug Server 即可： react-native start 接下来极其重要： （项目中的实战演习,项目中的简单使用） （简单来说就是两步， 要么创建 JavaScript 文件，要么修改 JavaScript文件，来实现项目中的布局和实现 ） javaScript 本人不是很熟，附上彩蛋(两篇) ： 来自OSChina: http://www.oschina.net/translate/going-native-with-react 来自知乎: http://zhuanlan.zhihu.com/FrontendMagazine/19996445 结论和后续 本篇文章，iOS 和 Android 都适用。至此，环境配置和示例项目运行应该都好了。后续我会继续发几篇文章介绍： 重点介绍 Android 相关的开发：包括组件，源码分析等； 动态热部署； 多端代码复用。 参考文档官方文档： https://facebook.github.io/react-native/docs/getting-started.html#content]]></content>
   </entry>
   <entry>
     <title></title>
@@ -27,18 +27,13 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F50261823%2F</url>
-    <content type="text"><![CDATA[Xcode升级,插件不能正常使用 昨天不小心升级了一下Xcode ,然后 今天使用的时候,发现插件使用不了了，比如我们常用的插件 VVDocumenter-Xcode(注释插件) 接下来我们教大家 如何让插件变得可用 1.打开终端。输入 defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID 然后我们得到序列号(这里是得到你本机的序列号) 如图 然后我们复制这个序列号，备用。 2.打开finder，然后command+shift+G 组合键。然后弹出个框框。然后 我们输入xocde插件路径： ~/library/Application Support/Developer/Shared/Xcode/Plug-ins 如图 3. 点击前往，我们找到插件 如图 4 .接下来 我们以其中的一个插件为例（其他插件的操作一样） 1.我们选择插件，然后点击右键(显示包内容)，如图： 2 .我们看到下面的界面：（如图） 3 .我们点击打开这个文件夹 ，接下来显示内容如图： 4 .然后我们打开info.plist 文件，如图： 然后 找到 如图所示的地方： 然后 增加一个Item 如图： 然后 把我们第一步复制的xcode 的序列号添加进去。。（Command+s 保存plist 文件） 5 .接下来 重启Xcode 以后会弹出一个框框， 重启Xcode时会提示“Load bundle”、 “SkipBundle”，这里必须选择“Load bundle”，不然插件无法使用。 总结：xcode升级以后，因为序列号不一样，所以我们要更改序列号。。。]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>%2F2017%2F07%2F10%2F50296581%2F</url>
     <content type="text"><![CDATA[IOS 蓝牙4.0(BLE 协议) 初窥 算了，都说初窥了，不写了，直接转载过来吧。。。 感谢 刘彦玮 大神 http://liuyanwei.jumppo.com/2015/07/17/ios-BLE-1.html 然后附上大神的 BabyBluetooth 的下载地址： https://github.com/coolnameismy/BabyBluetooth 详情请看 github 的介绍。。。。]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F50326673%2F</url>
-    <content type="text"><![CDATA[Itunes 制作苹果手机铃声 1.找到我们要添加的歌曲，直接拖入到iTunes中去。如图： 2.我们选中我们添加的文件，单击右键列表:(选择显示简介选项), 如图： 3.到达这个页面，如图： 4.选择“选项”选项卡 如图： 5. 在开始的地方输入我们要截取的音乐,( 注:苹果的铃声的大小不能超过40秒,如果超过,不能加入到铃声库中 ) 我这里选择19秒的一个片段(注：来电铃声会不断的循环)。 如图： 6. 设置好了以后，我们点击确定，然后返回到我们的音乐的首页( 注：这里以后是重要操作，不要眨眼啊 )； 这里我们找到我们修改的文件 然后点击右键 选择“创建ACC版本” 7. 然后我们看到，现在的列表上有两个文件，如图： 8.看到两个文件，19秒的那个文件就是我们创建的文件，然后我们单击右键 9.然后我们找到我们刚刚创建的文件”.m4a”结尾的文件，然后我们进行如下操作： 如图： 更改后缀为“m4r” 10.这里点击使用“.m4r”, 确定后 如图: 11. 这里以后，我们基本已经完成了铃声的只做了。把我们得到的“.m4r” 拷贝一份出去，我把它拷贝到下载的文件夹中： 如图： 11. 接下来我们打开我们的iTunes ，然后点开我们的那个隐藏的列表，然后点击铃声 如图： 12. 我们看到我们的铃声库了 13.接下来我们找到菜单栏，然后选择文件–&gt;添加到资料库 如图： 这里找到我们复制出来的“.m4r”的文件 然后点击打开，然后，我们就看到我们的这个里面就添加进来我们制作的铃声了 13.接下来 点击 左边的栏目有个铃声 。同步所有铃声 14. 上面选择完成了，下面有个同步，点击一下，Ok了 我们就可以在我们的手机上看到我们制作的铃声了： 15.OK了，快去制作自己喜欢的铃声吧]]></content>
+    <url>%2F2017%2F07%2F10%2F50261823%2F</url>
+    <content type="text"><![CDATA[Xcode升级,插件不能正常使用 昨天不小心升级了一下Xcode ,然后 今天使用的时候,发现插件使用不了了，比如我们常用的插件 VVDocumenter-Xcode(注释插件) 接下来我们教大家 如何让插件变得可用 1.打开终端。输入 defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID 然后我们得到序列号(这里是得到你本机的序列号) 如图 然后我们复制这个序列号，备用。 2.打开finder，然后command+shift+G 组合键。然后弹出个框框。然后 我们输入xocde插件路径： ~/library/Application Support/Developer/Shared/Xcode/Plug-ins 如图 3. 点击前往，我们找到插件 如图 4 .接下来 我们以其中的一个插件为例（其他插件的操作一样） 1.我们选择插件，然后点击右键(显示包内容)，如图： 2 .我们看到下面的界面：（如图） 3 .我们点击打开这个文件夹 ，接下来显示内容如图： 4 .然后我们打开info.plist 文件，如图： 然后 找到 如图所示的地方： 然后 增加一个Item 如图： 然后 把我们第一步复制的xcode 的序列号添加进去。。（Command+s 保存plist 文件） 5 .接下来 重启Xcode 以后会弹出一个框框， 重启Xcode时会提示“Load bundle”、 “SkipBundle”，这里必须选择“Load bundle”，不然插件无法使用。 总结：xcode升级以后，因为序列号不一样，所以我们要更改序列号。。。]]></content>
   </entry>
   <entry>
     <title></title>
@@ -47,13 +42,13 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F50432892%2F</url>
-    <content type="text"><![CDATA[如何从电脑中卸载cocoapods 今天为了写一篇教大家使用cocoapods的文章 ，特意研究了以下 如何卸载cocoapods， 因为本人的机子上已经安装成功了，所以要研究一下 如何卸载，然后在从新安装。 接下来我就教大家如何卸载cocoapods 1.打开终端，输入命令 which pod 然后回车 我们就看到一个地址，这个地址就是我们安装pod 的地址 如图所示 2 . 找到地址了，然后我们就要删除了 输入命令 sudo rm -rf /usr/local/bin/pod后面的地址就是图上的地址；接下来回让你输入密码（密码都知道，苹果的开机密码） 如图所示（ 移除pod组件 ） 3 .接下来我们就要找到我们的cocoapods 安装包的位置 输入如下命令： gem list （ 移除 RubyGems 中的 Cocoapods程序包， RubyGems（简称 gems）是一个用于对 Ruby组件进行打包的 Ruby打包系统。 它提供一个分发 Ruby 程序和库的标准格式，还提供一个管理程序包安装的工具。查看gems中本地程序包 ）如图所示： 4 .看到上面的列表，找到我们需要删除的cocoapods的部分，如图所示： 5 .接下来们要看清楚版本号，然后进行删除，输入命令 sudo gem uninstall cocoapods -v 0.39.0（注：后面的版本号要和上面列表中的版本号对应 ） 如果删除成功： 如图所示： 6. 接下来删除 下一个包,输入命令： sudo gem uninstall cocoapods-core -v 0.39.0（注：这个包上面也有，注意版本好的对应 ）， 如果删除成功：如图所示： 7 .接下来们们检查cocoapods是否删除： 输入如下命令： pod search AFNetworking或者pod 然后如图所示： 证明删除成功； 总结：cocoapods 的使用并没有我们想想的那么难，主要是对终端的操作要熟悉。好了，把cocoapods卸载掉了，然后开始安装吧…..]]></content>
+    <url>%2F2017%2F07%2F10%2F50326673%2F</url>
+    <content type="text"><![CDATA[Itunes 制作苹果手机铃声 1.找到我们要添加的歌曲，直接拖入到iTunes中去。如图： 2.我们选中我们添加的文件，单击右键列表:(选择显示简介选项), 如图： 3.到达这个页面，如图： 4.选择“选项”选项卡 如图： 5. 在开始的地方输入我们要截取的音乐,( 注:苹果的铃声的大小不能超过40秒,如果超过,不能加入到铃声库中 ) 我这里选择19秒的一个片段(注：来电铃声会不断的循环)。 如图： 6. 设置好了以后，我们点击确定，然后返回到我们的音乐的首页( 注：这里以后是重要操作，不要眨眼啊 )； 这里我们找到我们修改的文件 然后点击右键 选择“创建ACC版本” 7. 然后我们看到，现在的列表上有两个文件，如图： 8.看到两个文件，19秒的那个文件就是我们创建的文件，然后我们单击右键 9.然后我们找到我们刚刚创建的文件”.m4a”结尾的文件，然后我们进行如下操作： 如图： 更改后缀为“m4r” 10.这里点击使用“.m4r”, 确定后 如图: 11. 这里以后，我们基本已经完成了铃声的只做了。把我们得到的“.m4r” 拷贝一份出去，我把它拷贝到下载的文件夹中： 如图： 11. 接下来我们打开我们的iTunes ，然后点开我们的那个隐藏的列表，然后点击铃声 如图： 12. 我们看到我们的铃声库了 13.接下来我们找到菜单栏，然后选择文件–&gt;添加到资料库 如图： 这里找到我们复制出来的“.m4r”的文件 然后点击打开，然后，我们就看到我们的这个里面就添加进来我们制作的铃声了 13.接下来 点击 左边的栏目有个铃声 。同步所有铃声 14. 上面选择完成了，下面有个同步，点击一下，Ok了 我们就可以在我们的手机上看到我们制作的铃声了： 15.OK了，快去制作自己喜欢的铃声吧]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F51161228%2F</url>
-    <content type="text"><![CDATA[[ cocoaPods 安装第三库出现错误(target overrides the USER_HEADER_SEARCH_PATHS buildsetting defined in `Pods/) ](/qq_18670721/article/details/51161228) 1.今天在往项目中使用Cocoapods 添加第三方库的时候，出现问题 ： 1.添加上第三方库以后，然后直接运行项目，然后项目就报错，还是稀奇古怪的错误。 2.终端上也在提示我们第三方库没有添加成功，报错如下： 3 .解决办法如下： 1&gt;按照上面报错的提示，我们“ USER_HEADER_SEARCH_PATHS ” 这个复制下来。 2&gt;然后找到我们项目–》targates–》buildSetting 然后在右边的输入框中输入“ USER_HEADER_SEARCH_PATHS” 如下图： 3&gt; 然后搜索到了这个路径以后 ,在这路径中添加 “$(inherited)” 如下图： 4&gt;然后我们再次运行我们的项目 ，我们的项目就不会报错了。 4. 总结一下： cocoapods 我们只是用来管理第三方的，所以可能用的时候可能会出现很多未知的错误。要我们大家共同来发现了。]]></content>
+    <url>%2F2017%2F07%2F10%2F50432892%2F</url>
+    <content type="text"><![CDATA[如何从电脑中卸载cocoapods 今天为了写一篇教大家使用cocoapods的文章 ，特意研究了以下 如何卸载cocoapods， 因为本人的机子上已经安装成功了，所以要研究一下 如何卸载，然后在从新安装。 接下来我就教大家如何卸载cocoapods 1.打开终端，输入命令 which pod 然后回车 我们就看到一个地址，这个地址就是我们安装pod 的地址 如图所示 2 . 找到地址了，然后我们就要删除了 输入命令 sudo rm -rf /usr/local/bin/pod后面的地址就是图上的地址；接下来回让你输入密码（密码都知道，苹果的开机密码） 如图所示（ 移除pod组件 ） 3 .接下来我们就要找到我们的cocoapods 安装包的位置 输入如下命令： gem list （ 移除 RubyGems 中的 Cocoapods程序包， RubyGems（简称 gems）是一个用于对 Ruby组件进行打包的 Ruby打包系统。 它提供一个分发 Ruby 程序和库的标准格式，还提供一个管理程序包安装的工具。查看gems中本地程序包 ）如图所示： 4 .看到上面的列表，找到我们需要删除的cocoapods的部分，如图所示： 5 .接下来们要看清楚版本号，然后进行删除，输入命令 sudo gem uninstall cocoapods -v 0.39.0（注：后面的版本号要和上面列表中的版本号对应 ） 如果删除成功： 如图所示： 6. 接下来删除 下一个包,输入命令： sudo gem uninstall cocoapods-core -v 0.39.0（注：这个包上面也有，注意版本好的对应 ）， 如果删除成功：如图所示： 7 .接下来们们检查cocoapods是否删除： 输入如下命令： pod search AFNetworking或者pod 然后如图所示： 证明删除成功； 总结：cocoapods 的使用并没有我们想想的那么难，主要是对终端的操作要熟悉。好了，把cocoapods卸载掉了，然后开始安装吧…..]]></content>
   </entry>
   <entry>
     <title></title>
@@ -67,6 +62,16 @@
   </entry>
   <entry>
     <title></title>
+    <url>%2F2017%2F07%2F10%2F51161228%2F</url>
+    <content type="text"><![CDATA[[ cocoaPods 安装第三库出现错误(target overrides the USER_HEADER_SEARCH_PATHS buildsetting defined in `Pods/) ](/qq_18670721/article/details/51161228) 1.今天在往项目中使用Cocoapods 添加第三方库的时候，出现问题 ： 1.添加上第三方库以后，然后直接运行项目，然后项目就报错，还是稀奇古怪的错误。 2.终端上也在提示我们第三方库没有添加成功，报错如下： 3 .解决办法如下： 1&gt;按照上面报错的提示，我们“ USER_HEADER_SEARCH_PATHS ” 这个复制下来。 2&gt;然后找到我们项目–》targates–》buildSetting 然后在右边的输入框中输入“ USER_HEADER_SEARCH_PATHS” 如下图： 3&gt; 然后搜索到了这个路径以后 ,在这路径中添加 “$(inherited)” 如下图： 4&gt;然后我们再次运行我们的项目 ，我们的项目就不会报错了。 4. 总结一下： cocoapods 我们只是用来管理第三方的，所以可能用的时候可能会出现很多未知的错误。要我们大家共同来发现了。]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2F2017%2F07%2F10%2F51162336%2F</url>
+    <content type="text"><![CDATA[[ cocoapods 安装第三方库，然后运行项目，报错（sharedApplication’ is unavailable: notavailable iOS (App Extension)） ](/qq_18670721/article/details/51162336) 1.不知怎么回事，这两天遇到的都是cocoapods 的问题。 2.安装一个第三方库，然后 直接在运行项目，然后就出现错误：错误如下： 有时候 也不一定是这个错误。还可能报 UIActionSheet或者是 UIAlertView的错误 但是 错误提示和上面的一模一样。 3.我在想，以前安装都没有问题，为什么这两天安装就有问题了。后来经过半天的google和百度终于找到原因了不是我们代码的问题，也不是第三方库的问题，问题就出在了cocoapods上面。 4.解决办法如下： 首先我们要卸载我们的cocoapods 然后我们再重新安装我们的cocoapods，然后再重新导入我们的第三方库。 然后，再次运行我们的项目然后就不会再报这个错误了。(注：怎么卸载和怎么安装cocoapods 我的博客中都有体现的)。 5.这个解决办法是按照苹果官方论坛给出的解决办法：（链接如下：） https://forums.developer.apple.com/thread/25213 总结：总有那么多我们预想不到的错误，努力吧！加油！]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>%2F2017%2F07%2F10%2F51323473%2F</url>
     <content type="text"><![CDATA[使用hexo+github 搭建自己的博客领地 1.使用hexo 和github 创建属于自己的私人领地 1.安装hexo ，之前必须要有两个必要的条件 1.必须要安装Node.js 这个工具包 下载 2.必须安装git； 2.满足这两个条件后，我们就要开始安装hexo 了 安装之前我们要创建一个本地的文件夹，然后把hexo安装的配置文件存放在这个文件夹中。然后我们打开终端，然后找到我们刚刚创建的文件夹，在这个文件夹下我们输入hexo的安装命令 ;命令如下： sudo npm install-g hexo 3 . 如图，出现上面的内容以后证明我们已经安装hexo 成功了。 4.接下来，我们要输入命令 “ hexo init “ 初始化 如图所示 6 . 我们要生成静态页面； 命令如下： hexo generate (hexo g 也可以); 如图所示： 5 .初始化完成以后，我们要开启本地的服务 输入命令：” hexo server “ 如图： 6 .输入命令后我们可以打开这个网站 http:localhost:4000/ ;有的时候能打开，有的时候打不开，没有关系，我们接下来配置一下就好了。 7.接下来我们要配置GitHub ; 1&gt; 有github账号的话可以直接创建 和用户名一样的仓库， 列如： 我的github 的账号是bujieshi, 那么我们新创建的仓库名称为bujieshi.github.io; 一定要对应，不然的话 后期配置无法关联； 如图所示 2 &gt;接下来我们要创建 账户和我们本地的关联了，仓库创建成功我们要复制仓库的地址， 接下来我们到终端，找到我们安装hexo 的目录 查看一下；(如图所示：) 3&gt; 接下来我们要关联账户 输入命令:” vim _config.yml “, 然后进入vim 编辑模式 ， 进入后 输入i，进入编辑模式，更改如下： 如图所示：(把我们github 的账户的地址复制进来) 4 &gt; 更改完成后，点击ESC 按钮， 然后输入:wq 保存退出 8 接下来输入命令： ” npm install hexo-deployer-git–save “ 如图所示 9.然后输入命令：” hexo d “ //上传本地更改内容到github； 然后我们就可以打开自己的博客了 地址为：你自己的用户名 http://bujieshi.github.io/ 以后每次部署步骤 每次部署的步骤，可按以下三步来进行。 hexo clean hexo generate hexo deploy 至此，我们基本算是配置完了，接下来再来几个 常用的命令 hexo new”postName” #新建文章 hexo new page”pageName” #新建页面 hexo generate #生成静态页面至public目录 hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server） hexo deploy #将.deploy目录部署到GitHub hexo help # 查看帮助 hexo version #查看Hexo的版本]]></content>
   </entry>
@@ -77,23 +82,18 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F51162336%2F</url>
-    <content type="text"><![CDATA[[ cocoapods 安装第三方库，然后运行项目，报错（sharedApplication’ is unavailable: notavailable iOS (App Extension)） ](/qq_18670721/article/details/51162336) 1.不知怎么回事，这两天遇到的都是cocoapods 的问题。 2.安装一个第三方库，然后 直接在运行项目，然后就出现错误：错误如下： 有时候 也不一定是这个错误。还可能报 UIActionSheet或者是 UIAlertView的错误 但是 错误提示和上面的一模一样。 3.我在想，以前安装都没有问题，为什么这两天安装就有问题了。后来经过半天的google和百度终于找到原因了不是我们代码的问题，也不是第三方库的问题，问题就出在了cocoapods上面。 4.解决办法如下： 首先我们要卸载我们的cocoapods 然后我们再重新安装我们的cocoapods，然后再重新导入我们的第三方库。 然后，再次运行我们的项目然后就不会再报这个错误了。(注：怎么卸载和怎么安装cocoapods 我的博客中都有体现的)。 5.这个解决办法是按照苹果官方论坛给出的解决办法：（链接如下：） https://forums.developer.apple.com/thread/25213 总结：总有那么多我们预想不到的错误，努力吧！加油！]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>%2F2017%2F07%2F10%2F72922131%2F</url>
     <content type="text"><![CDATA[APP 上传遇到的问题 APP 上传遇到的问题![这里写图片描述](http://img.blog.csdn.net/20170608162110433?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMTg2NzA3MjE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast) 解决办法解决办法，登陆到苹果开发者账号中心，然后点击税务，然后更新下合同协议 然后就OK了!]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F72922237%2F</url>
-    <content type="text"><![CDATA[清除项目中与svn的关联 清除项目中与svn 的关联终端进入到你项目中所在文件夹的根目录 然后在终端输入命令find . -type d -name &quot;.svn&quot; |xargs rm -rvf 然后就删除项目 与svn的关联了。。。]]></content>
+    <url>%2F2017%2F07%2F10%2F72922219%2F</url>
+    <content type="text"><![CDATA[代码行数统计 代码行数统计命令行找到项目所在位置的根目录，然后输入下面的命令 find . &quot;(&quot; -name &quot;*.m&quot; -or -name &quot;*.mm&quot; -or -name &quot;*.cpp&quot; -or -name &quot;*.h&quot; -or -name “*.swift” -or -name &quot;*.rss&quot; &quot;)&quot; -print | xargs wc -l]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F72922219%2F</url>
-    <content type="text"><![CDATA[代码行数统计 代码行数统计命令行找到项目所在位置的根目录，然后输入下面的命令 find . &quot;(&quot; -name &quot;*.m&quot; -or -name &quot;*.mm&quot; -or -name &quot;*.cpp&quot; -or -name &quot;*.h&quot; -or -name “*.swift” -or -name &quot;*.rss&quot; &quot;)&quot; -print | xargs wc -l]]></content>
+    <url>%2F2017%2F07%2F10%2F72922237%2F</url>
+    <content type="text"><![CDATA[清除项目中与svn的关联 清除项目中与svn 的关联终端进入到你项目中所在文件夹的根目录 然后在终端输入命令find . -type d -name &quot;.svn&quot; |xargs rm -rvf 然后就删除项目 与svn的关联了。。。]]></content>
   </entry>
   <entry>
     <title></title>
@@ -117,13 +117,13 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F72923221%2F</url>
-    <content type="text"><![CDATA[Xcode 插件管理器安装和删除 Xcode 插件管理器安装 ：安装：命令mkdir -p ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins;curl -L http://git.io/lOQWeA | tar xvz -C ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins 删除命令：rm -rf ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/Alcatraz.xcpluginrm -rf ~/Library/Application\ Support/Alcatraz]]></content>
+    <url>%2F2017%2F07%2F10%2F72954378%2F</url>
+    <content type="text"><![CDATA[U盘重装Mac系统 制作U盘 安装系统 （参数说明：第一个位置为 系统所在位置，第二个位置为 目标位置 下面紫色的位置为 U盘的名称）sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/Capitan --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction 最后一个capitan 为最后U盘位置]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F72954378%2F</url>
-    <content type="text"><![CDATA[U盘重装Mac系统 制作U盘 安装系统 （参数说明：第一个位置为 系统所在位置，第二个位置为 目标位置 下面紫色的位置为 U盘的名称）sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/Capitan --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction 最后一个capitan 为最后U盘位置]]></content>
+    <url>%2F2017%2F07%2F10%2F72923221%2F</url>
+    <content type="text"><![CDATA[Xcode 插件管理器安装和删除 Xcode 插件管理器安装 ：安装：命令mkdir -p ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins;curl -L http://git.io/lOQWeA | tar xvz -C ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins 删除命令：rm -rf ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/Alcatraz.xcpluginrm -rf ~/Library/Application\ Support/Alcatraz]]></content>
   </entry>
   <entry>
     <title></title>
