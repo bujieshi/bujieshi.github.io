@@ -7,13 +7,13 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F50171615%2F</url>
-    <content type="text"><![CDATA[iphone 手机忘记 访问限制密码 处理方法(未越狱版) 本人 配置环境： 手机 ：iphone 5s A1533 系统：ios 8.4 使用电脑 ：mac air (windows 下未做测试，但是基本流程，基本一样 ); 结果： 亲测 ，可行， 1.所需工具 1. iBackupbot (最新版) 2.iTunes 2.开始进行 1. 下载并安装iBackupbot备份修改软件， 点击这里 进入官网，根据自己的电脑系统进行选择下载。 2、使用iTunes对iPhone做一个新的备份。 3、在iBackupbot里打开刚刚做好的这个备份，刚打开的时候可能会弹出一些错误信息等提示框，不用担心，iBackupbot是可以正常使用的， 3. 打开 iBackupbot 以后 最新版的会直接吧备份文件添加到iBackupbot中 然后点击System Files 接下来我们就看到我们的系统目录了，然后 在右边的工具栏上 输入 com.apple.springboard.plist 然后回车 ，找到文件 com.apple.springboard.plist 找到 com.apple.springboard.plist 文件 双击以后出现下面的情况 如图 这里需要注册么？ not ，不需要 点击 cancel 然后打开文件， 到达这一步 大家要小心了,(很重要) 接下来要找到 这个地方 然后 在下面添加文件(很重要) 这里添加 如果是直接从其他地方 复制过来的话，会保存失败 ， 这里要手动敲进去，然后才能保存成功，这里我摸索了半天，一直保存失败，手动敲入以后，才保存成功 添加完成以后视图如下： 然后点击保存的话 (直接Command+s) 1.保存失败提示： 2.保存成功 没有提示 接下来如何验证是否保存成功 1.双击再次 打开 com.apple.springboard.plist 文件 2.检查写入的两行东西是否成功，如图： 太好了，这行东西还在，那就好， 然后打开 iTunes ， 然后点击恢复备份 如果你的备份比较多的话，点击键盘上的shift+ 鼠标左键+iTunes 上的恢复按钮，选择你更改过的备份， 然后就是漫长的等待了 最后验证： 恢复完成后 打开设置—&gt;通用—&gt;访问限制 亲测，已成功，给力的给个赞]]></content>
+    <url>%2F2017%2F07%2F10%2F50171619%2F</url>
+    <content type="text"><![CDATA[ios 开发之加入所需字库问题 1. 下载所需的字库，然后添加到项目中 然后 添加到项目中 如图所示 2. 在info.plist 文件中添加 字库文件 (注： 我这里出现了问题，加载info.plist文件的时候你会发现有两个info.plist 文件。如下图：) ios 项目中 test 也是一个测试项目 (注：这里添加文件 不要添加错了，我这里犯了个错误，把下图的这句话加载到了test 这个info文件中，然后调试半天没有出来) 3.在正确的info.plist 文件中添加完成后，接下来就是在项目中的使用，这里如果不知道你要添加的名字：这里有两种方法： 第一种方法：选择你下砸的字库 然后双击打开 ， 打开完文件文件 ，提示如下图： 然后 最上面的标题栏就是你要使用的字体的名称 第二种方法： for ( int i = 0 ; i &lt; [familys count ]; i++) { NSString *family = [familys objectAtIndex :i]; NSLog ( @”Fontfamily:%@” , family); } 用这个方法进行调试 在输出的字体查看 是否加入成功 打开全部的字库文件： （注：这个字库的名称就是和我们第一种方法打开的字库标题的名称是一样的） 找到我们需要的字体，接下来就是使用了 UIFont *font = [ UIFont fontWithName : @”Akzidenz-Grotesk BQ” size :150 ]; _lableTarget . font = font; 一句话搞定了！ OK了，亲测，效果 如图：]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F50171619%2F</url>
-    <content type="text"><![CDATA[ios 开发之加入所需字库问题 1. 下载所需的字库，然后添加到项目中 然后 添加到项目中 如图所示 2. 在info.plist 文件中添加 字库文件 (注： 我这里出现了问题，加载info.plist文件的时候你会发现有两个info.plist 文件。如下图：) ios 项目中 test 也是一个测试项目 (注：这里添加文件 不要添加错了，我这里犯了个错误，把下图的这句话加载到了test 这个info文件中，然后调试半天没有出来) 3.在正确的info.plist 文件中添加完成后，接下来就是在项目中的使用，这里如果不知道你要添加的名字：这里有两种方法： 第一种方法：选择你下砸的字库 然后双击打开 ， 打开完文件文件 ，提示如下图： 然后 最上面的标题栏就是你要使用的字体的名称 第二种方法： for ( int i = 0 ; i &lt; [familys count ]; i++) { NSString *family = [familys objectAtIndex :i]; NSLog ( @”Fontfamily:%@” , family); } 用这个方法进行调试 在输出的字体查看 是否加入成功 打开全部的字库文件： （注：这个字库的名称就是和我们第一种方法打开的字库标题的名称是一样的） 找到我们需要的字体，接下来就是使用了 UIFont *font = [ UIFont fontWithName : @”Akzidenz-Grotesk BQ” size :150 ]; _lableTarget . font = font; 一句话搞定了！ OK了，亲测，效果 如图：]]></content>
+    <url>%2F2017%2F07%2F10%2F50171615%2F</url>
+    <content type="text"><![CDATA[iphone 手机忘记 访问限制密码 处理方法(未越狱版) 本人 配置环境： 手机 ：iphone 5s A1533 系统：ios 8.4 使用电脑 ：mac air (windows 下未做测试，但是基本流程，基本一样 ); 结果： 亲测 ，可行， 1.所需工具 1. iBackupbot (最新版) 2.iTunes 2.开始进行 1. 下载并安装iBackupbot备份修改软件， 点击这里 进入官网，根据自己的电脑系统进行选择下载。 2、使用iTunes对iPhone做一个新的备份。 3、在iBackupbot里打开刚刚做好的这个备份，刚打开的时候可能会弹出一些错误信息等提示框，不用担心，iBackupbot是可以正常使用的， 3. 打开 iBackupbot 以后 最新版的会直接吧备份文件添加到iBackupbot中 然后点击System Files 接下来我们就看到我们的系统目录了，然后 在右边的工具栏上 输入 com.apple.springboard.plist 然后回车 ，找到文件 com.apple.springboard.plist 找到 com.apple.springboard.plist 文件 双击以后出现下面的情况 如图 这里需要注册么？ not ，不需要 点击 cancel 然后打开文件， 到达这一步 大家要小心了,(很重要) 接下来要找到 这个地方 然后 在下面添加文件(很重要) 这里添加 如果是直接从其他地方 复制过来的话，会保存失败 ， 这里要手动敲进去，然后才能保存成功，这里我摸索了半天，一直保存失败，手动敲入以后，才保存成功 添加完成以后视图如下： 然后点击保存的话 (直接Command+s) 1.保存失败提示： 2.保存成功 没有提示 接下来如何验证是否保存成功 1.双击再次 打开 com.apple.springboard.plist 文件 2.检查写入的两行东西是否成功，如图： 太好了，这行东西还在，那就好， 然后打开 iTunes ， 然后点击恢复备份 如果你的备份比较多的话，点击键盘上的shift+ 鼠标左键+iTunes 上的恢复按钮，选择你更改过的备份， 然后就是漫长的等待了 最后验证： 恢复完成后 打开设置—&gt;通用—&gt;访问限制 亲测，已成功，给力的给个赞]]></content>
   </entry>
   <entry>
     <title></title>
@@ -27,13 +27,13 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F50261823%2F</url>
-    <content type="text"><![CDATA[Xcode升级,插件不能正常使用 昨天不小心升级了一下Xcode ,然后 今天使用的时候,发现插件使用不了了，比如我们常用的插件 VVDocumenter-Xcode(注释插件) 接下来我们教大家 如何让插件变得可用 1.打开终端。输入 defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID 然后我们得到序列号(这里是得到你本机的序列号) 如图 然后我们复制这个序列号，备用。 2.打开finder，然后command+shift+G 组合键。然后弹出个框框。然后 我们输入xocde插件路径： ~/library/Application Support/Developer/Shared/Xcode/Plug-ins 如图 3. 点击前往，我们找到插件 如图 4 .接下来 我们以其中的一个插件为例（其他插件的操作一样） 1.我们选择插件，然后点击右键(显示包内容)，如图： 2 .我们看到下面的界面：（如图） 3 .我们点击打开这个文件夹 ，接下来显示内容如图： 4 .然后我们打开info.plist 文件，如图： 然后 找到 如图所示的地方： 然后 增加一个Item 如图： 然后 把我们第一步复制的xcode 的序列号添加进去。。（Command+s 保存plist 文件） 5 .接下来 重启Xcode 以后会弹出一个框框， 重启Xcode时会提示“Load bundle”、 “SkipBundle”，这里必须选择“Load bundle”，不然插件无法使用。 总结：xcode升级以后，因为序列号不一样，所以我们要更改序列号。。。]]></content>
+    <url>%2F2017%2F07%2F10%2F50296581%2F</url>
+    <content type="text"><![CDATA[IOS 蓝牙4.0(BLE 协议) 初窥 算了，都说初窥了，不写了，直接转载过来吧。。。 感谢 刘彦玮 大神 http://liuyanwei.jumppo.com/2015/07/17/ios-BLE-1.html 然后附上大神的 BabyBluetooth 的下载地址： https://github.com/coolnameismy/BabyBluetooth 详情请看 github 的介绍。。。。]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2F2017%2F07%2F10%2F50296581%2F</url>
-    <content type="text"><![CDATA[IOS 蓝牙4.0(BLE 协议) 初窥 算了，都说初窥了，不写了，直接转载过来吧。。。 感谢 刘彦玮 大神 http://liuyanwei.jumppo.com/2015/07/17/ios-BLE-1.html 然后附上大神的 BabyBluetooth 的下载地址： https://github.com/coolnameismy/BabyBluetooth 详情请看 github 的介绍。。。。]]></content>
+    <url>%2F2017%2F07%2F10%2F50261823%2F</url>
+    <content type="text"><![CDATA[Xcode升级,插件不能正常使用 昨天不小心升级了一下Xcode ,然后 今天使用的时候,发现插件使用不了了，比如我们常用的插件 VVDocumenter-Xcode(注释插件) 接下来我们教大家 如何让插件变得可用 1.打开终端。输入 defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID 然后我们得到序列号(这里是得到你本机的序列号) 如图 然后我们复制这个序列号，备用。 2.打开finder，然后command+shift+G 组合键。然后弹出个框框。然后 我们输入xocde插件路径： ~/library/Application Support/Developer/Shared/Xcode/Plug-ins 如图 3. 点击前往，我们找到插件 如图 4 .接下来 我们以其中的一个插件为例（其他插件的操作一样） 1.我们选择插件，然后点击右键(显示包内容)，如图： 2 .我们看到下面的界面：（如图） 3 .我们点击打开这个文件夹 ，接下来显示内容如图： 4 .然后我们打开info.plist 文件，如图： 然后 找到 如图所示的地方： 然后 增加一个Item 如图： 然后 把我们第一步复制的xcode 的序列号添加进去。。（Command+s 保存plist 文件） 5 .接下来 重启Xcode 以后会弹出一个框框， 重启Xcode时会提示“Load bundle”、 “SkipBundle”，这里必须选择“Load bundle”，不然插件无法使用。 总结：xcode升级以后，因为序列号不一样，所以我们要更改序列号。。。]]></content>
   </entry>
   <entry>
     <title></title>
@@ -87,6 +87,11 @@
   </entry>
   <entry>
     <title></title>
+    <url>%2F2017%2F07%2F10%2F72922201%2F</url>
+    <content type="text"><![CDATA[从Mac中完全删除office 验证数字：sudo sh -c &quot;curl -s https://raw.githubusercontent.com/jimye/OfficeUninstall/master/office_uninstaller.sh | sh&quot; 等待终端命令走完就OK了，我们就彻底从我们的项目删除office 的所有文件了 然后从新安装就好了。]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>%2F2017%2F07%2F10%2F72922219%2F</url>
     <content type="text"><![CDATA[代码行数统计 代码行数统计命令行找到项目所在位置的根目录，然后输入下面的命令 find . &quot;(&quot; -name &quot;*.m&quot; -or -name &quot;*.mm&quot; -or -name &quot;*.cpp&quot; -or -name &quot;*.h&quot; -or -name “*.swift” -or -name &quot;*.rss&quot; &quot;)&quot; -print | xargs wc -l]]></content>
   </entry>
@@ -94,11 +99,6 @@
     <title></title>
     <url>%2F2017%2F07%2F10%2F72922237%2F</url>
     <content type="text"><![CDATA[清除项目中与svn的关联 清除项目中与svn 的关联终端进入到你项目中所在文件夹的根目录 然后在终端输入命令find . -type d -name &quot;.svn&quot; |xargs rm -rvf 然后就删除项目 与svn的关联了。。。]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F2017%2F07%2F10%2F72922201%2F</url>
-    <content type="text"><![CDATA[从Mac中完全删除office 验证数字：sudo sh -c &quot;curl -s https://raw.githubusercontent.com/jimye/OfficeUninstall/master/office_uninstaller.sh | sh&quot; 等待终端命令走完就OK了，我们就彻底从我们的项目删除office 的所有文件了 然后从新安装就好了。]]></content>
   </entry>
   <entry>
     <title></title>
