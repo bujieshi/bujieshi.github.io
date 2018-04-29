@@ -136,18 +136,89 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:undefined;background-image:url(/images/random/vateral-9.png)" >
-  <h2></h2>
+  <div class="post-page-title"  style="background-color:undefined;background-image:url(/images/random/vateral-10.png)" >
+  <h2>苹果电脑支持NTFS</h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:46.000Z">
-          2017-07-10
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2018-04-29T08:07:44.830Z">
+          2018-04-29
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <h1 id="APP-上传遇到的问题"><a href="#APP-上传遇到的问题" class="headerlink" title=" APP 上传遇到的问题 "></a><a href="/qq_18670721/article/details/72922131"> APP 上传遇到的问题 </a></h1><h1 id="APP-上传遇到的问题-1"><a href="#APP-上传遇到的问题-1" class="headerlink" title="APP 上传遇到的问题"></a>APP 上传遇到的问题</h1><h2 id="这里写图片描述-http-img-blog-csdn-net-20170608162110433-watermark-2-text-aHR"><a href="#这里写图片描述-http-img-blog-csdn-net-20170608162110433-watermark-2-text-aHR" class="headerlink" title="![这里写图片描述](http://img.blog.csdn.net/20170608162110433?watermark/2/text/aHR"></a>![这里写图片描述](<a href="http://img.blog.csdn.net/20170608162110433?watermark/2/text/aHR" target="_blank" rel="external">http://img.blog.csdn.net/20170608162110433?watermark/2/text/aHR</a></h2><p>0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMTg2NzA3MjE=/font/5a6L5L2T/fontsize/400/fill/I0JB<br>QkFCMA==/dissolve/70/gravity/SouthEast)</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h5 id="解决办法，登陆到苹果开发者账号中心，然后点击税务，然后更新下合同协议-然后就OK了"><a href="#解决办法，登陆到苹果开发者账号中心，然后点击税务，然后更新下合同协议-然后就OK了" class="headerlink" title="解决办法，登陆到苹果开发者账号中心，然后点击税务，然后更新下合同协议 然后就OK了!"></a>解决办法，登陆到苹果开发者账号中心，然后点击税务，然后更新下合同协议 然后就OK了!</h5>
+  <ol>
+<li>插上移动硬盘或者U盘</li>
+<li>打开终端，然后在终端中输入”diskutil list” 查看插入磁盘的名称</li>
+</ol>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">diskutil</span> list</span>
+</code></pre>
+<ol>
+<li>然后输入命令“ls /Volumes” 找到自己需要的硬盘的名称<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">ls</span> <span class="token operator">/</span>Volumes</span>
+</code></pre>
+</li>
+<li>然后更新 /etc/fstab文件,输入命令  “sudo nano /etc/fstab” 或者”sudo vi /etc/fstab”</li>
+</ol>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">sudo</span> nano <span class="token operator">/</span>etc<span class="token operator">/</span>fstab 或者 sudo vi <span class="token operator">/</span>etc<span class="token operator">/</span>fstab</span>
+</code></pre>
+<ol>
+<li>然后写入“LABEL=Untitled none ntfs rw,auto,nobrowse” Untitled 为硬盘名称(这一步的作用是把硬盘加上写的权限)(如果你的名字里面有空格键，就需要用\040的意思是代替空格键，比如西数的硬盘名字很统一，也带空格，可以这样写：My\040Passport，后面 ntfs rw表示把这个分区挂载为可读写的ntfs格式，最后nobrowse非常重要，因为这个代表了在finder里不显示这个分区，这个选项非常重要，如果不写入的话挂载是不会成功的。)</li>
+</ol>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token variable-declaration"><span class="token variable">LABEL=Untitled</span> none ntfs rw<span class="token punctuation">,</span>auto<span class="token punctuation">,</span>nobrowse</span>
+</code></pre>
+<ol>
+<li>写完这里以后不是按回车，按 Ctrl + X，会出现要不要保存的字样，请按 Y 然后回车 然后重新吧硬盘拔插一次</li>
+<li>.LABEL=Untitled none ntfs rw,auto,nobrowse</li>
+</ol>
+<p>2、使MacOS系统支持NTFS写入</p>
+<p>PS.原理就是将MacOS自带的 mount_ntfs 默认加载方式从只读改成读写<br>①、打开终端.app(Terminal.app)：</p>
+<p>应用位置：应用程序——&gt;实用工具——&gt;终端.app<br>②、切换到root身份：</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">sudo</span> -s</span>
+</code></pre>
+<p>③进入/sbin目录：</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">cd</span> <span class="token operator">/</span>sbin</span>
+</code></pre>
+<p>④、修改默认的NTFS挂载脚本名字：</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">mv</span> mount_ntfs mount_ntfs_rbase</span>
+</code></pre>
+<p>⑤、新建NTFS挂载脚本并编辑：</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">vi</span> mount_ntfs</span>
+</code></pre>
+<p>然后按一下键盘的i(注意英文输入法模式的小写)键进入编辑模式，然后在文件里面加入以下内容：</p>
+<pre class=" language-stylus"><code class="language-stylus">#!/bin/sh
+/sbin/mount_ntfs_rbase -o rw,nobrowse <span class="token string">"$@"</span>
+</code></pre>
+<p>然后保存输入的内容，保存步骤如下：<br>I、按下键盘的esc键</p>
+<p>II、在英文输入法模式小写状态下一次按下键盘的:wq键</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token punctuation">:</span>wq
+</code></pre>
+<p>III、按下回车键保存</p>
+<p>⑥、修改脚本权限：</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">chmod</span> a<span class="token operator">+</span>x mount_ntfs</span>
+</code></pre>
+<p>⑦、退出root用户：</p>
+<pre class=" language-stylus"><code class="language-stylus">exit
+</code></pre>
+<p>3、将Volumes放到侧边栏方便访问硬盘：</p>
+<p>MacOS下所有硬盘都挂载在/Volumes目录，为了方便访问硬盘, 可以在Finder里用快捷键command+shift+G打开跳转, 输/Volumes进入所有磁盘目录, 然后在再用快捷键command+control+T将 /Volumes 保存到边栏，这样以后新插入的硬盘就可以直接在Finder边栏的Volumes中找到了<br>其它问题：</p>
+<p>一、执行上述步骤2.4时有错误的解决办法：</p>
+<p>如果在执行上述2.4步骤时有如下错误==mv: rename mount_ntfs to mount_ntfs_orig: Operation not permitted.==提示，可以进行如下操作：<br>1、重启Mac并进入恢复模式(Recovery)：</p>
+<p>重启电脑时不停的按快捷键command+R<br>2、使用终端.app关闭安全限制：</p>
+<p>进入恢复模式后在顶部找到实用工具下的终端.app并打开，打开后在终端中输入以下命令：</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">csrutil</span> disable</span>
+</code></pre>
+<p>3、重启Mac：</p>
+<p>在终端中输入</p>
+<pre class=" language-stylus"><code class="language-stylus">reboot
+</code></pre>
+<p>命令重启Mac<br>4、重复上述2.4步骤</p>
+<p>二、为避免其它安全隐患，可以在完成操作后打开安全限制，打开方法如下：</p>
+<p>1、重启Mac并进入恢复模式(Recovery)</p>
+<p>2、使用终端.app打开安全限制：</p>
+<p>进入恢复模式后在顶部找到实用工具下的终端.app并打开，打开后在终端中输入以下命令：</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">csrutil</span> enable</span>
+</code></pre>
+<p>3、重启Mac<br>通过以上操作，就可以完成NTFS格式硬盘的读写操作了，而且有了Paragon NTFS，还可以实现对硬盘的NTFS格式化操作。</p>
+
   </div>
   <!--评论块-->
     
@@ -181,15 +252,11 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2017/07/10/51162336/" id="post_nav-newer" class="post-nav-content prev-content">
-      新篇
-  </a>
-    
 
 
   <!-- Next Nav -->
     
-  <a href="/2017/07/10/72922219/" id="post_nav-older" class="post-nav-content next-content">
+  <a href="/2018/04/29/苹果电脑安装软件提示文件损坏/" id="post_nav-older" class="post-nav-content next-content">
       旧篇
   </a>
     
@@ -197,7 +264,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#APP-上传遇到的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text"> APP 上传遇到的问题 </span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#APP-上传遇到的问题-1"><span class="post-toc-number">2.</span> <span class="post-toc-text">APP 上传遇到的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#这里写图片描述-http-img-blog-csdn-net-20170608162110433-watermark-2-text-aHR"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">![这里写图片描述](http://img.blog.csdn.net/20170608162110433?watermark/2/text/aHR</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决办法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解决办法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#解决办法，登陆到苹果开发者账号中心，然后点击税务，然后更新下合同协议-然后就OK了"><span class="post-toc-number">2.2.0.0.1.</span> <span class="post-toc-text">解决办法，登陆到苹果开发者账号中心，然后点击税务，然后更新下合同协议 然后就OK了!</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
