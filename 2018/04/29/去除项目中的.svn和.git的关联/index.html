@@ -136,18 +136,25 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:undefined;background-image:url(/images/random/vateral-19.png)" >
-  <h2></h2>
+  <div class="post-page-title"  style="background-color:undefined;background-image:url(/images/random/vateral-6.png)" >
+  <h2>去除项目中的.svn和.git 的关联</h2>
     
-  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2017-07-10T07:42:45.000Z">
-          2017-07-10
+  <p>作者:佛前一粒沙 &nbsp&nbsp 发布于:<time datetime="2018-04-29T07:13:32.755Z">
+          2018-04-29
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <h1 id="代码行数统计"><a href="#代码行数统计" class="headerlink" title=" 代码行数统计 "></a><a href="/qq_18670721/article/details/72922219"> 代码行数统计 </a></h1><h2 id="代码行数统计-1"><a href="#代码行数统计-1" class="headerlink" title="代码行数统计"></a>代码行数统计</h2><h3 id="命令行找到项目所在位置的根目录，然后输入下面的命令"><a href="#命令行找到项目所在位置的根目录，然后输入下面的命令" class="headerlink" title="命令行找到项目所在位置的根目录，然后输入下面的命令"></a>命令行找到项目所在位置的根目录，然后输入下面的命令</h3><pre><code>    find . &quot;(&quot; -name &quot;*.m&quot; -or -name &quot;*.mm&quot; -or -name &quot;*.cpp&quot; -or -name &quot;*.h&quot; -or -name “*.swift” -or -name &quot;*.rss&quot; &quot;)&quot; -print | xargs wc -l
+  <h2 id="使用终端找到你的文件夹所在根目录"><a href="#使用终端找到你的文件夹所在根目录" class="headerlink" title="使用终端找到你的文件夹所在根目录"></a>使用终端找到你的文件夹所在根目录</h2><p>###去除<strong>.svn</strong>项目中的关联</p>
+<p>####在文件的夹的根目录下输入以下代码，完成后回车</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">find</span> <span class="token operator">.</span> -type d -name <span class="token string">".svn"</span> |xargs rm -rvf</span>
 </code></pre>
+<p>###去除项目中<strong>.git</strong>的关联</p>
+<p>###在文件的夹的根目录下输入以下代码，完成后回车</p>
+<pre class=" language-stylus"><code class="language-stylus"><span class="token property-declaration"><span class="token property">git</span> remote remove origin</span>
+</code></pre>
+
   </div>
   <!--评论块-->
     
@@ -181,7 +188,7 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2017/07/10/72922131/" id="post_nav-newer" class="post-nav-content prev-content">
+  <a href="/2018/04/29/苹果电脑安装软件提示文件损坏/" id="post_nav-newer" class="post-nav-content prev-content">
       新篇
   </a>
     
@@ -189,7 +196,7 @@
 
   <!-- Next Nav -->
     
-  <a href="/2017/07/10/72922201/" id="post_nav-older" class="post-nav-content next-content">
+  <a href="/2017/07/10/50171619/" id="post_nav-older" class="post-nav-content next-content">
       旧篇
   </a>
     
@@ -197,7 +204,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码行数统计"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 代码行数统计 </span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码行数统计-1"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">代码行数统计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令行找到项目所在位置的根目录，然后输入下面的命令"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">命令行找到项目所在位置的根目录，然后输入下面的命令</span></a></li></ol></li></ol></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用终端找到你的文件夹所在根目录"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用终端找到你的文件夹所在根目录</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
